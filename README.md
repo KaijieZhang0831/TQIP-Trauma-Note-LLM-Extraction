@@ -8,7 +8,8 @@ The LLM we used is "us.deepseek.r1-v1:0" and the embedding we used is "amazon.ti
 
 ### patient_features
 `patient_features.json` is required for the experinment, where Notes were retrieved using FHIR R4. A sample format is below. Make sure your format align for successful testing:
-
+<pre>
+  <code>
 [
   {
     "csn": "CSN_000001",
@@ -72,14 +73,18 @@ The LLM we used is "us.deepseek.r1-v1:0" and the embedding we used is "amazon.ti
     }
   }
 ]
+    </code>
+</pre>
 
 ### ground_truth.csv
 `ground_truth.csv` is required for the experinment. This is constructed by professional clinical staff. A sample format is below. Make sure your format align for successful testing:
-
+<pre>
+  <code>
 csn,aki,aws,ards,cardiac_arrest_cpr,cauti,delirium,dvt,mi,osteomyelitis,pressure_ulcer,pe,severe_sepsis,stroke_cva,superficial_ssi,unplanned_icu_admission,unplanned_intubation,unplanned_or_visit,vap
 CSN_000001,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
 CSN_000002,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0
-
+    </code>
+</pre>
 
 ## File Structure
 <pre>
@@ -114,7 +119,7 @@ Our project explores whether large language models can support trauma registry a
 </p>
 
 ## Hot to Use
-1. Environment set up
+### 1. Environment set up
 We strongly recommand using Linux for the experinment. To set up the conda environment for Linux, type
 ```
 python3 -m pip install -U pip
@@ -129,7 +134,7 @@ We also recommand using tmux to assit your long-time running:
 sudo yum install -y tmux
 ```
 
-2. Run and Evaluate
+### 2. Run and Evaluate
 Make sure `patient_features.json` is in the root folder with correct format. Simply run,
 ```
 python3 main.py
