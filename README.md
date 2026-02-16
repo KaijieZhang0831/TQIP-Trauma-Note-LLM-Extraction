@@ -1,8 +1,10 @@
 # TQIP-TRAUMA-NOTE-Extraction
-This repository creates a baseline RAG pipeline to test the ability of an LLM to summarize medical notes in the [NTDS-18](https://www.facs.org/quality-programs/trauma/quality/national-trauma-data-bank/national-trauma-data-standard/) Benchmark. The NTDS-18 benchmark is used by TQIP to evaluate hospital performance. The notes generated in data/syntheic_ntds_trauma_notes_gemini.csv are synthetic notes produced by generator (part 1 of our pipeline). These were generated with the help of an LLM. data/ntds_18_complications.json provides an overview of all the complications tested for within the NTDS-18 dataset.
+LLMs offer a potential solution to streamline this process. We hypothesized that a LLM could be applied to review patient charts and identify complications as defined by the Trauma Quality Improvement Program, offering an effective adjunct to manual chart reviews. This is to a complication screening pipeline driven by LLMs that can support clinical staff to construct TQIP Trauma Note Complication Reports.
 
 ## Data
 Because real clinical data, especially trauma notes and medication orders, are protected and sensitive, all of our data, the patient features, were stored in monitored and protected environment. The Prompt with CoT were created based on the [National Trauma Data Standard Data Dictionary 2025 Admission](https://health.wyo.gov/wp-content/uploads/2025/01/2025-Data-Dictionary.pdf) as the instruction.
+
+The LLM we used is "us.deepseek.r1-v1:0" and the embedding we used is "amazon.titan-embed-text-v2:0" via Amazon Bedrock.
 
 
 ## File Structure
@@ -26,6 +28,7 @@ Because real clinical data, especially trauma notes and medication orders, are p
 </pre>
 
 ## Introduction
+
 
 <p align="center">
   <table>
@@ -52,17 +55,9 @@ sudo yum install -y tmux
 ```
 
 2. Run and Evaluate
-
-
-
-## Experiment Method
-
-
-## Result
-
-
-
-## Contribution
-- Kaijie Zhang: 
-
-- Viv Somani: 
+```
+python3 main.py
+```
+```
+python3 eval_test.py
+```
