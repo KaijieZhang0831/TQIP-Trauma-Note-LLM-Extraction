@@ -1,11 +1,883 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Large Language Models for Trauma Care Quality</title>
-  </head>
-  <body>
-    <h1>This is our website for our project of large language models for trauma care quality</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Agent Security Bench (ASB): Formalizing and Benchmarking Attacks and Defenses in LLM-based Agents</title>
+  <link rel="icon" type="image/x-icon" href="static/images/robot.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Agent Security Bench (ASB): Formalizing and Benchmarking Attacks and Defenses in LLM-based Agents</h1>
+                  <div class="is-size-5 publication-authors">
+                    <!-- Paper authors -->
+                    <span class="author-block">
+                      <a href="https://zhang-henry.github.io/">Hanrong Zhang</a><sup>1</sup>,</span>
+                    <span class="author-block">
+                      <a href="https://luckfort.github.io/">Jingyuan Huang</a><sup>2</sup>,</span>
+                    <span class="author-block">
+                        <a href="https://dongyuanjushi.github.io/">Kai Mei</a><sup>2</sup>,</span>
+                    <span class="author-block">
+                      <a href="https://scholar.google.com/citations?user=XLOJ7R0AAAAJ">Yifei Yao</a><sup>1</sup>,</span>
+                    <p></p>
+                    <span class="author-block">
+                      <a href="https://zhentingwang.github.io/">Zhenting Wang</a><sup>2</sup>,</span>
+                    <span class="author-block">
+                      <a href="https://scholar.google.com/citations?user=XY2MhmoAAAAJ">Chenlu Zhan</a><sup>1</sup>,</span>
+                    <span class="author-block">
+                      <a href="https://dske.zju.edu.cn/people_profile/?user_id=3">Hongwei Wang</a><sup>1</sup>,</span>
+                    <span class="author-block">
+                      <a href="https://yongfeng.me/">Yongfeng Zhang</a><sup>2</sup></span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block"><sup>1</sup>Zhejiang University,</span>
+                    <span class="author-block"><sup>2</sup>Rutgers University</span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block"><font color="red"><b>ICLR 2025 Accepted</b></font></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                      <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://openreview.net/pdf?id=V4y0CpX4hK"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2410.02644"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!--<span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>-->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/agiresearch/ASB"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!--<span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Opening Image-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div align=center>
+        <img src="./static/images/LLM Agent Attack.jpg" alt="Agent Attack" style="width: 100%;">
+        <h2 class="subtitle has-text-centered">
+          <div align=justify>
+            Overview of the LLM Agent Attacking Framework, including Direct Prompt Injections (DPI), Indirect Prompt Injections (IPI), Plan-of-Thought (PoT) Backdoor, and Memory Poisoning Attacks, which target the user query, observations, system prompts, and memory retrieval respectively of the agent during action planning and execution.
+          </div>
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Opening Image -->
+
+<!-- Abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>Although LLM-based agents, powered by Large Language Models (LLMs), can use external tools and memory mechanisms to solve complex real-world tasks, they may also introduce critical security vulnerabilities. However, the existing literature does not comprehensively evaluate attacks and defenses against LLM-based agents. </p>
+          
+          <p>To address this, we introduce <span class="dnerf">Agent Security Bench (ASB)</span>, a comprehensive framework designed to formalize, benchmark, and evaluate the attacks and defenses of LLM-based agents, including 10 scenarios (e.g., e-commerce, autonomous driving, finance), 10 agents targeting the scenarios, over 400 tools, 27 different types of attack/defense methods, and 7 evaluation metrics. </p>
+          
+          <p>Based on ASB, we benchmark 10 prompt injection attacks, a memory poisoning attack, a novel Plan-of-Thought backdoor attack, 4 mixed attacks, and 11 corresponding defenses across 13 LLM backbones.</p>
+          
+          <p>Our benchmark results reveal critical vulnerabilities in different stages of agent operation, including system prompt, user prompt handling, tool usage, and memory retrieval, with the highest average attack success rate of 84.30%, but limited effectiveness shown in current defenses, unveiling important works to be done in terms of agent security for the community. We also introduce a new metric to evaluate the agents' capability to balance utility and security. Our code can be found at <a href="https://github.com/agiresearch/ASB">
+            <span>https://github.com/agiresearch/ASB</span>.
+          </a></p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Abstract -->
+
+<!-- Introduction -->
+<section class="section hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+        <div align=center>
+          <h2 class="title is-3">💡Introduction</h2>
+        </div>
+
+        <br/><br/>
+
+        <div class="content has-text-justified">
+          <h3 class="subtitle has-text-justified">
+
+            <p>💫 ASB is a comprehensive benchmarking framework designed to evaluate various adversarial attacks and defenses of LLM-based agents. </p>
+            
+            <p>💫 Compared to other benchmarks, ASB's key advantages lie in its inclusion of multiple types of attacks and defense mechanisms across diverse scenarios. </p>
+            
+            <p>💫 This not only allows the framework to test agents under more realistic conditions but also to cover a broader spectrum of vulnerabilities and protective strategies. </p>
+          </h3>
+        </div>
+
+    </div>
+  </div>
+</section>
+<!-- End Introduction -->
+
+<!-- Attack Methods on Agents -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div align=center>
+        <h2 class="title is-3">⚔️Attack Methods on Agents</h2>
+      </div>
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <!-- Your image here -->
+        <div class="image-body">
+          <div align=center>
+            <img src="./static/images/DPI.png" alt="Agent Attack" style="width: 70%;">
+          </div>
+        </div>
+        <h3 class="subtitle has-text-centered">
+          <div align=justify>
+            In a <i>DPI</i> scenario, an attacker adds a malicious command to the user's prompt, instructing the <i>Data Export</i> tool to leak the latest financial reports. The LLM processes this input, disrupting the <i>system_admin_agent</i>'s reasoning and altering its logic. The manipulated plan enables the export and leak of sensitive data. The agent then follows this plan, using the <i>Data Export</i> tool as part of the original task in step 2, as it matches the user task most closely.
+          </div>
+        </h3>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <div class="image-body">
+          <div align=center>
+            <img src="./static/images/IPI.png" alt="Agent Attack" style="width: 70%;">
+          </div>
+        </div>
+        <h3 class="subtitle has-text-centered">
+          <div align=justify>
+            In an <i>IPI</i> scenario, after the agent correctly calls the <i>System Monitor</i> tool in step 1, an attacker injects a malicious instruction into the observation, altering the tool's response. This manipulated observation disrupts the <i>system_admin_agent</i>'s reasoning in step 2, leading it to incorrectly use the <i>Data Export</i> tool and leak the latest financial reports. The agent called the Data Export tool because the altered observation from step 1 matched its description most closely.
+          </div>
+        </h3>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <div class="image-body">
+          <div align=center>
+            <img src="./static/images/MP.png" alt="Agent Attack" style="width: 70%;">
+          </div>
+        </div>
+        <h3 class="subtitle has-text-centered">
+          <div align=justify>
+            In this scenario, a third-party attacker compromised an agent previously, generating a poisoned plan that was stored in the memory database. When the <i>system_admin_agent</i> retrieves a similar plan from memory for a similar task, the LLM processes it and generates another poisoned plan. This induces the agent to perform incorrect actions, ultimately invoking <i>Data Export</i> to leak financial reports.
+          </div>
+        </h3>
+     </div>
+     <div class="item">
+      <!-- Your image here -->
+      <div class="image-body">
+        <div align=center>
+          <img src="./static/images/PoT.png" alt="Agent Attack" style="width: 70%;">
+        </div>
+      </div>
+      <h3 class="subtitle has-text-centered">
+        <div align=justify>
+          In this scenario, a third-party attacker embeds backdoored PoT demonstrations into the system prompt, instructing the <i>system_admin_agent</i> to activate the <i>Data Export</i> attack tool when encountering the trigger phrase ``:)''. Upon receiving a user prompt with the appended trigger phrase, the LLM generates a corrupted plan, misleading the agent into performing unintended actions.
+        </div>
+      </h3>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- Attack Methods on Agents -->
+
+<!-- Attack and defense types -->
+<section class="section hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div align=center>
+        <h2 class="title is-3">⚔️Attack and Defense Types🛡️</h2>
+      </div>
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <!-- Your image here -->
+        <div class="image-body">
+          <div align=center>
+            <img src="./static/images/attacktype.png" alt="Agent Attack" style="width: 200%;">
+          </div>
+        </div>
+        <h3 class="subtitle has-text-centered">
+          <div align=center>
+            <p> Five types of prompt injection types. </p>
+          </div>
+        </h3>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <div class="image-body">
+          <div align=center>
+            <img src="./static/images/defensetype.png" alt="Agent Attack" style="width: 200%;">
+          </div>
+        </div>
+        <h3 class="subtitle has-text-centered">
+          <div align=center>
+            <p> Defenses and the corresponding attacks they defend against.</p>
+          </div>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- Attack and defense type -->
+
+
+<!-- Agent Scenarios -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <!-- Agent Scenarios. -->
+      <h2 class="title is-3"><div align=center>🎬Agent Scenarios</div></h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            We aim to attack <font color="blue"><a href="https://github.com/agiresearch/ASB/tree/main/pyopenagi/agents/example"><span>target agents</span></a></font> across 10 distinct domains (IT management, investment, legal advice, medicine, academic advising, counseling, e-commerce, aerospace design, research, and autonomous vehicles), each represents a unique challenge and functionality. Figures below provide a comprehensive overview of these agents, detailing their purposes, capabilities, descriptions, normal tools and related selected external attack tools (some of their names have slightly altered). 
+            You can also look up all the tools <font color="blue"><a href="https://github.com/agiresearch/ASB/tree/main/data"><span>here</span></a></font>.
+          </div>
+
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item">
+             <!-- Your image here -->
+             <div class="image-body">
+               <div align=center>
+                 <img src="./static/images/agentscenario/system admin.png" alt="Agent Attack" style="width: 100%;">
+               </div>
+             </div>
+             <h3 class="subtitle has-text-centered">
+               <div align=justify>
+                 <p> <b>IT Management</b>: <i>system_admin_agent</i> is a system administrator responsible for managing and maintaining computer
+                  systems and networks, ensuring proper system operation and security, allocating re
+                 sources, managing user rights, performing system upgrades, and troubleshooting. </p>
+               </div>
+             </h3>
+            </div>
+            <div class="item">
+              <!-- Your image here -->
+              <div class="image-body">
+                <div align=center>
+                  <img src="./static/images/agentscenario/financial analyst.png" alt="Agent Attack" style="width: 100%;">
+                </div>
+              </div>
+              <h3 class="subtitle has-text-centered">
+                <div align=justify>
+                  <p> <b>Investment</b>: <i> financial_analyst_agent</i> is a financial analyst providing financial analysis and investment advice to
+                    clients, analyzing market trends, assessing investment risks and returns, and man
+                   aging investment portfolios. </p>
+                </div>
+              </h3>
+            </div>
+
+            <div class="item">
+              <!-- Your image here -->
+              <div class="image-body">
+                <div align=center>
+                  <img src="./static/images/agentscenario/legal consultant.png" alt="Agent Attack" style="width: 100%;">
+                </div>
+              </div>
+              <h3 class="subtitle has-text-centered">
+                <div align=justify>
+                  <p> <b>Legal Advice</b>: <i>legal_consultant_agent</i> is a legal advisor who provides legal counseling and advice to clients, drafting and reviewing legal documents to ensure legal compliance. </p>
+                </div>
+              </h3>
+            </div>
+
+            <div class="item">
+              <!-- Your image here -->
+              <div class="image-body">
+                <div align=center>
+                  <img src="./static/images/agentscenario/medical.png" alt="Agent Attack" style="width: 100%;">
+                </div>
+              </div>
+              <h3 class="subtitle has-text-centered">
+                <div align=justify>
+                  <p> <b>Medicine</b>: <i> medical_advisor_agent</i> a medical consultant who provides medical advice and diagnosis to patients,
+                    develops treatment plans, and manages patient records. </p>
+                </div>
+              </h3>
+            </div>
+
+            <div class="item">
+              <!-- Your image here -->
+              <div class="image-body">
+                <div align=center>
+                  <img src="./static/images/agentscenario/education consultant.png" alt="Agent Attack" style="width: 100%;">
+                </div>
+              </div>
+              <h3 class="subtitle has-text-centered">
+                <div align=justify>
+                  <p> <b>Academic Advising</b>: <i>education_consultant_agent</i> is an educational consultant who helps students choose courses and schools, assesses their performance, and provides academic counseling. </p>
+                </div>
+              </h3>
+            </div>
+
+            <div class="item">
+              <!-- Your image here -->
+              <div class="image-body">
+                <div align=center>
+                  <img src="./static/images/agentscenario/psychological.png" alt="Agent Attack" style="width: 100%;">
+                </div>
+              </div>
+              <h3 class="subtitle has-text-centered">
+                <div align=justify>
+                  <p> <b>Counseling</b>: <i> psychological_counselor_agent</i> is a counselor who provides psychological counseling and support to patients to help them deal with emotional problems and mental disorders. </p>
+                </div>
+              </h3>
+            </div>
+
+            <div class="item">
+              <!-- Your image here -->
+              <div class="image-body">
+                <div align=center>
+                  <img src="./static/images/agentscenario/ecommerce.png" alt="Agent Attack" style="width: 100%;">
+                </div>
+              </div>
+              <h3 class="subtitle has-text-centered">
+                <div align=justify>
+                  <p> <b>E-commerce</b>: <i> ecommerce_manager_agent</i> is an e-commerce manager responsible for managing and optimizing the e-commerce platform, managing the product catalog and inventory, and developing the marketing strategy. </p>
+                </div>
+              </h3>
+            </div>
+
+            <div class="item">
+              <!-- Your image here -->
+              <div class="image-body">
+                <div align=center>
+                  <img src="./static/images/agentscenario/aerospace.png" alt="Agent Attack" style="width: 100%;">
+                </div>
+              </div>
+              <h3 class="subtitle has-text-centered">
+                <div align=justify>
+                  <p> <b>Aerospace Design</b>: <i>aerospace_engineer_agent</i> is an aerospace engineer responsible for the design and development of aerospace vehicles and systems, flight testing, and evaluation. </p>
+                </div>
+              </h3>
+            </div>
+
+            <div class="item">
+              <!-- Your image here -->
+              <div class="image-body">
+                <div align=center>
+                  <img src="./static/images/agentscenario/academic research.png" alt="Agent Attack" style="width: 100%;">
+                </div>
+              </div>
+              <h3 class="subtitle has-text-centered">
+                <div align=justify>
+                  <p> <b>Research</b>: <i> academic_research_agent</i> is an expert who is good at looking up and summarizing academic articles. </p>
+                </div>
+              </h3>
+            </div>
+
+            <div class="item">
+              <!-- Your image here -->
+              <div class="image-body">
+                <div align=center>
+                  <img src="./static/images/agentscenario/autonomous driving.png" alt="Agent Attack" style="width: 100%;">
+                </div>
+              </div>
+              <h3 class="subtitle has-text-centered">
+                <div align=justify>
+                  <p> <b>Autonomous Vehicles</b>: <i>autonomous_driving_agent</i> is a self-driving technologist who monitors and controls the operation of self driving vehicles, optimizing self-driving algorithms and path planning.</p>
+                </div>
+              </h3>
+            </div>
+          </div>
+
+          <div class="content has-text-justified">
+            PS: The figures we used are from public domains (<font color="blue"><a href="https://www.flaticon.com/"><span>Flaticon</span></a></font> & <font color="blue"><a href="https://www.pexels.com/"><span>Pexels</span></a></font>).
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Agent Scenarios -->
+
+
+<!-- LLM -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <!-- LLM -->
+      <h2 class="title is-3"><div align=center>🧠LLMs Used</div></h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            We employ both open-source and closed-source LLMs for our experiments. The open-source ones are LLaMA3 (8B, 70B), LLaMA3.1 (8B, 70B), Gemma2 (9B, 27B), Mixtral (8x7B), and Qwen2 (7B, 72B), and the closed-source ones are GPT (3.5-Turbo, 4o, 4o-mini) and Claude-3.5 Sonnet.
+            The leaderboard of LLMs is <font color="blue"><a href="https://artificialanalysis.ai/leaderboards/models"><span>here</span></a></font>.
+          </div>
+
+          <div class="item">
+            <!-- Your image here -->
+            <div class="image-body">
+              <div align=center>
+                <img src="./static/images/llmleaderboard.png" alt="Agent Attack" style="width: 70%;">
+              </div>
+            </div>
+            <h3 class="subtitle has-text-centered">
+              <div align=justify>
+                We show the number of parameters and the providers of the LLMs used in our evaluation in the following figure.
+              </div>
+            </h3>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End LLM -->
+
+
+<!-- Experiments -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">
+        <div align=center>📊Experiments</div>
+      </h2>
+      
+      <h4 class="title is-3">
+        <div align=center><b>📏Evaluation Metrics</b></div>
+      </h4>
+
+      <div class="image-body">
+        <div align=center>
+          <img src="./static/images/t4.png" alt="Agent Attack" style="width: 100%;">
+        </div>
+      </div>
+      
+      <div align=justify>
+      <p>We introduce the evaluation metrics in the figure above. Generally, a higher ASR indicates a more effective attack. After a defense, a lower ASR indicates a more effective defense. The refuse rate is measured to assess how agents recognize and reject unsafe user requests, ensuring safe and policy-compliant actions. Our benchmark includes both aggressive and non-aggressive tasks to evaluate this ability. Higher RR indicates more refusal of aggressive tasks by the agent. If BP is close to PNA, it indicates that the agent's actions for clean queries are unaffected by the attack. In addition, lower FPR and FNR indicate a more successful detection defense.
+      </p>
+      </div>
+
+      <br/><br/>
+      <h4 class="title is-3">
+        <div align=center><b>📈Results</b></div>
+      </h4>
+
+      <p>We have conducted extensive experiments on both attack and defense of agent, and the experiments are rich in results. </p>
+
+      <p>Here, we could give you an overview on our experiments. The experiments we conducted are as follows:</p>
+
+      <p>⚔️<b>Agent Attack</b>: We evaluated the agent attacks with 5 attack types on 13 LLM backbones.</p>
+
+      <p>🛡️<b>Agent Defense</b>: We evaluated the agent defenses against all four types of agent attacks.</p>
+
+      <p>💪<b>LLM Capability vs ASR</b>: We evaluated the correlation between backbone LLM leaderboard quality and average ASR across various attacks.</p>
+
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t5.png" alt="Agent Attack" style="width: 100%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> ⚔️ 1) Mixed Attack is the Most Effective. 2) DPI is Widely Effective. </p>
+              <p> 3) IPI Shows Moderate Effectiveness. 4) Memory Poisoning is the Least Effective. </p>
+              <p> 5) PoT Backdoor Targets Advanced Models. 6) Partial Refusal of Aggressive Instructions. </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t14.png" alt="Agent Attack" style="width: 100%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> ⚔️ Evaluation on different attack combinations. </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t6.png" alt="Agent Attack" style="width: 50%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> ⚔️ Performance Metrics of Different LLM backbones. </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t7.png" alt="Agent Attack" style="width: 50%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> 🛡️ Current prevention-based defenses are inadequate. (See Section 5.4) </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t8.png" alt="Agent Attack" style="width: 50%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> 🛡️ Current prevention-based defenses are inadequate. (See Section 5.4) </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t15.png" alt="Agent Attack" style="width: 100%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> ⚔️ PoT Backdoor Attacks are Effective across Different Triggers. </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t16.png" alt="Agent Attack" style="width: 50%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> ⚔️ Unaffected Utility Performance for PoT Backdoored Agents. </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t17.png" alt="Agent Attack" style="width: 100%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> ⚔️ Combined Attack can Outperform Standalone Methods. </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t18.png" alt="Agent Attack" style="width: 100%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> ⚔️ Agents Demostrate Enhanced Resilience in Aggressive Scenarios. </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t19.png" alt="Agent Attack" style="width: 100%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> 🛡️ Slight Decline in Agent Performance from Defenses. </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t20.png" alt="Agent Attack" style="width: 100%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> 🛡️ Ineffectiveness of Defenses for PoT Attack. </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/t21.png" alt="Agent Attack" style="width: 50%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> 🛡️ Ineffectiveness of Defenses Against Memory Attacks. The defense mechanisms against memory attacks are largely ineffective. (See Table 21) </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/fprvsfnr.png" alt="Agent Attack" style="width: 50%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> 🛡️ FPR vs. FNR curve for PPL detection in identifying memory poisoning attack. High perplexity indicates compromised content. The curve shows FNR and FPR variations across different thresholds. Shallower colors correspond to lower thresholds, while darker colors correspond to higher thresholds. </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/pna.png" alt="Agent Attack" style="width: 50%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> 💪 PNA vs ASR. ASR and agents' utility show a rise-then-fall relationship. (See Section 5.3) </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/llm_vs_pna.png" alt="Agent Attack" style="width: 50%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> 💪 LLM Capability vs PNA. Agent performance is generally weaker than LLM leaderboard quality. (See Section 5.3) </p>
+            </div>
+          </h3>
+        </div>
+
+        <div class="item">
+          <!-- Your image here -->
+          <div class="image-body">
+            <div align=center>
+              <img src="./static/images/llm_vs_asr.png" alt="Agent Attack" style="width: 50%;">
+            </div>
+          </div>
+          <h3 class="subtitle has-text-centered">
+            <div align=center>
+              <p> 💪 LLM Capability vs ASR. ASR and agents' utility show a rise-then-fall relationship. (See Section 5.3) </p>
+            </div>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Experiments -->
+
+
+<!-- Conclusion -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Conclusion</h2>
+        <div class="content has-text-justified">
+          <h3 class="subtitle has-text-justified">
+
+            <p>📏We introduce <span class="dnerf">ASB</span>, a benchmark for evaluating the security of LLM agents under various attacks and defenses. </p>
+          
+            <p>💥<span class="dnerf">ASB</span> reveals key vulnerabilities of LLM-based agents in every operational step. </p>
+            
+            <p>🛡️<span class="dnerf">ASB</span> provides a crucial resource for developing stronger defenses and more resilient LLM agents. </p>
+            
+            <p>💡In the future, we will focus on improving defenses and expanding attack scenarios.</p>
+
+          </h3>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Conclusion -->
+
+
+
+<!-- Paper poster -->
+<!--<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Poster</h2>
+
+      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
+          </iframe>
+        
+      </div>
+    </div>
+  </section>-->
+<!--End paper poster -->
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{
+          zhang2025agent,
+          title={Agent Security Bench ({ASB}): Formalizing and Benchmarking Attacks and Defenses in {LLM}-based Agents},
+          author={Hanrong Zhang and Jingyuan Huang and Kai Mei and Yifei Yao and Zhenting Wang and Chenlu Zhan and Hongwei Wang and Yongfeng Zhang},
+          booktitle={The Thirteenth International Conference on Learning Representations},
+          year={2025},
+          url={https://openreview.net/forum?id=V4y0CpX4hK}
+          }</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
   </body>
-</html>
+  </html>
