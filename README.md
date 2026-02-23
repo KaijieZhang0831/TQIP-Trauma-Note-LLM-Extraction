@@ -1,6 +1,8 @@
 # TQIP-TRAUMA-NOTE-Extraction
+
 LLMs offer a potential solution to streamline this process. We hypothesized that a LLM could be applied to review patient charts and identify complications as defined by the Trauma Quality Improvement Program, offering an effective adjunct to manual chart reviews. This is to a complication screening pipeline driven by LLMs that can support clinical staff to construct TQIP Trauma Note Complication Reports.
 
+Website Link: https://kaijiezhang0831.github.io/TQIP-Trauma-Note-LLM-Extraction/
 ## Data
 Because real clinical data, especially trauma notes and medication orders, are protected and sensitive, all of our data, the patient features, were stored in monitored and protected environment. The Prompt with CoT were created based on the [National Trauma Data Standard Data Dictionary 2025 Admission](https://health.wyo.gov/wp-content/uploads/2025/01/2025-Data-Dictionary.pdf) as the instruction.
 
