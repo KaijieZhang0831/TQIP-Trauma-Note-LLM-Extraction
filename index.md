@@ -16,7 +16,31 @@ Our primary outcome was agreement between the LLM and manual reviews performed b
 
 ## Performance
 
-As a simple smoke test for AWS Bedrock with new embedding and LLMs, here is the pre-Embedding and pre-LLM optimization (raw) of experiment on 20 patient features (During extended runs we encountered several technical issues that required additional time to diagnose and stabilize, therefore we used a subset of 20 samples as a preliminary peek at the system behavior): TODO: Insert Table
+As a simple smoke test for AWS Bedrock with new embedding and LLMs, here is the pre-Embedding and pre-LLM optimization (raw) of experiment on 20 patient features (During extended runs we encountered several technical issues that required additional time to diagnose and stabilize, therefore we used a subset of 20 samples as a preliminary peek at the system behavior):
+
+| Complication                         |           Sensitivity |   PPV |   NPV |
+| ------------------------------------ | --------------------: | ----: | ----: |
+| Alcohol Withdrawal Syndrome          |                 0.857 | 0.667 | 0.909 |
+| Delirium                             |                 1.000 | 0.667 | 1.000 |
+| DVT/Thrombophlebitis                 |                 0.333 | 1.000 | 0.895 |
+| Stroke/CVA                           |                    NA | 0.000 | 1.000 |
+| Unplanned Intubation                 |                 1.000 | 0.200 | 1.000 |
+| Unplanned Admission to ICU           |                 1.000 | 0.600 | 1.000 |
+| Severe Sepsis                        |                    NA | 0.000 | 1.000 |
+| Pressure Ulcer                       |                    NA | 0.000 | 1.000 |
+| Cardiac Arrest with CPR              |                 1.000 | 1.000 | 1.000 |
+| Acute Kidney Injury                  |                    NA | 0.000 | 1.000 |
+| Unplanned Visit to OR                |                    NA | 0.000 | 1.000 |
+| Pulmonary Embolism                   |                    NA | 0.000 | 1.000 |
+| Myocardial Infarction                |                    NA |    NA | 1.000 |
+| VAP                                  |                    NA | 0.000 | 1.000 |
+| ARDS                                 |                    NA |    NA | 1.000 |
+| CAUTI                                |                    NA | 0.000 | 1.000 |
+| Osteomyelitis                        |                    NA |    NA | 1.000 |
+| Superficial Incisional SSI           |                    NA |    NA | 1.000 |
+| **Overall Sensitivity**              |     **0.857 (18/21)** |       |       |
+| **Total TP / FP / FN / TN**          | **18 / 40 / 3 / 299** |       |       |
+| **Average Additional Complications** |              **200%** |       |       |
 
 # Conclusion
 
