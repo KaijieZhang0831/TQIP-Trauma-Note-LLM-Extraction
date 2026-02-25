@@ -146,7 +146,7 @@ in the terminal. It will take some time and you can review the progress by the l
 python3 main.py | tee run_test.log
 ```
 
-After that, you will get a new folder in the root named `complication_results_wt_xxx/`. They are the result/prediction your model made. For the evaluation step, make sure `ground_truth.csv` is in the root folder with correct format. Then run,
+After that, you will get a new folder in the root named `complication_results_wt_xxx/`. They are the result/prediction your model made. For the evaluation step, make sure `ground_truth.csv` is in the root folder with correct format and the selected `complication_results_wt_xxx/` path is correct in `eval_test.py`. Then run,
 ```
 python3 eval_test.py
 ```
