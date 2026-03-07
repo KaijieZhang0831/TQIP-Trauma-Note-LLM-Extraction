@@ -155,7 +155,7 @@ def compare_complications(df, aggregated_results):
 
 
 # Use the function to aggregate results
-output_dir = 'complication_results_wt_test/'
+output_dir = 'complication_results_wt_test5_deepseek/'
 aggregated_results = aggregate_results(output_dir)
 df = pd.read_csv('/home/kaz034/tqip/tqip/ground_truth.csv', dtype={'csn':str})
 keep = set(aggregated_results.keys())
@@ -165,6 +165,33 @@ print("Eval cases:", len(df))
 individual_results_df, aggregated_metrics, missed_cases, per_complication_stats = compare_complications(df, aggregated_results)
 
 individual_results_df.to_csv(os.path.join(output_dir, "eval_individual.csv"), index=False)
+
+vote_log_path = os.path.join(output_dir, "vote_log.csv")
+json_mode_stats = {
+    "total_llm_calls": 0,
+    "total_samples": 0,
+    "structured_outputs_calls": 0,
+    "structured_outputs_samples": 0,
+    "fallback_calls": 0,
+    "fallback_samples": 0
+}
+
+if os.path.exists(vote_log_path):
+    df_votes = pd.read_csv(vote_log_path, dtype={"csn": str})
+    if "json_structured_samples" in df_votes.columns and "json_fallback_samples" in df_votes.columns:
+        df_votes["json_structured_samples"] = pd.to_numeric(df_votes["json_structured_samples"], errors="coerce").fillna(0).astype(int)
+        df_votes["json_fallback_samples"] = pd.to_numeric(df_votes["json_fallback_samples"], errors="coerce").fillna(0).astype(int)
+
+        json_mode_stats["total_llm_calls"] = int(len(df_votes))
+        json_mode_stats["structured_outputs_calls"] = int((df_votes["json_structured_samples"] > 0).sum())
+        json_mode_stats["fallback_calls"] = int((df_votes["json_fallback_samples"] > 0).sum())
+
+        json_mode_stats["structured_outputs_samples"] = int(df_votes["json_structured_samples"].sum())
+        json_mode_stats["fallback_samples"] = int(df_votes["json_fallback_samples"].sum())
+        json_mode_stats["total_samples"] = int(json_mode_stats["structured_outputs_samples"] + json_mode_stats["fallback_samples"])
+
+aggregated_metrics["json_mode_stats"] = json_mode_stats
+
 with open(os.path.join(output_dir, "eval_aggregated.json"), "w") as f:
     json.dump(aggregated_metrics, f, indent=2)
 with open(os.path.join(output_dir, "eval_per_complication.json"), "w") as f:
