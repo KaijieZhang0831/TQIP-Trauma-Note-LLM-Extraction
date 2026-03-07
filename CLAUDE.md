@@ -249,7 +249,7 @@ Main Python packages (see `requirements_local_llm_py39.txt` for full list):
 - sentence-transformers
 
 **Environment Setup:**
-- Python 3.9+ recommended
+- Use .venv as the environment, with python 3.9+
 - Linux environment strongly recommended
 - AWS credentials configured for Bedrock access
 - Optional: tmux for managing long-running processes
