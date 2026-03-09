@@ -1,0 +1,2 @@
+ts,csn,question_key,prompt_kind,subprompt_idx,has_splits,n_splits,k_retrieved,samples,parsed,yes,no,invalid,rule,json_structured_samples,json_fallback_samples,decision,rationale_preview
+12345678910.123456,01234567890,DVT/THROMBOPHLEBITIS,cot,,True,18,4,3,3,3,0,0,best_of_n,0,3,yes,The patient has a diagnosis of Left popliteal DVT documented in the Progress Notes.

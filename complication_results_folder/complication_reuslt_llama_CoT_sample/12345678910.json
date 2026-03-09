@@ -1,0 +1,15 @@
+{
+    "found_questions": {
+        "PRESSURE ULCER": {
+            "rationale": "Traumatic Injury Abrasion Buttock(s) Left indicates skin injury, and presence of IVs may indicate potential pressure points",
+            "notes_used": "xxx",
+            "note_idx": null
+        },
+        "ARDS": {
+            "rationale": "node_1: YES, Diagnosis of ARDS is documented. node_2: YES, Onset of symptoms began after patient arrived at hospital. node_3: YES, Symptoms began within 1 week of known clinical insult. node_4: YES, Chest imaging revealed bilateral opacities not fully explained by effusions, lobar/lung collapse, or nodules. node_5: NO, Respiratory failure not fully explained by cardiac failure or fluid overload. node_6: YES, Patient meets oxygenation criteria (Moderate: 100 mm Hg < PaO2/FIO2 < 200 mm Hg With PEEP >5 cm H2O).",
+            "notes_used": "xxx",
+            "note_idx": null
+        }
+    },
+    "processing_time": 53.04587173461914
+}

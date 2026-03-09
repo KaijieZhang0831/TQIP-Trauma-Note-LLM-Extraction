@@ -1,0 +1,25 @@
+{
+    "found_questions": {
+        "DELIRIUM": {
+            "rationale": "Node 1: YES, Signs/symptoms of delirium are documented in the medical notes (e.g. 'Restless and delirious throughout the shift', 'cannot always state the city he is in').",
+            "notes_used": "xxx",
+            "note_idx": null
+        },
+        "PRESSURE ULCER": {
+            "rationale": "The patient has a pressure ulcer documented in the medical notes.",
+            "notes_used": "xxx",
+            "note_idx": null
+        },
+        "UNPLANNED VISIT TO THE OR": {
+            "rationale": "The patient was taken to the operating room emergently for evacuation of SDH, which was not indicated in the patient's original plan of care. The patient was unable to consent for himself and emergency consent was obtained given the life-threatening nature of his condition.",
+            "notes_used": "xxx",
+            "note_idx": null
+        },
+        "VAP": {
+            "rationale": "Pneumonia diagnosis documented in medical notes.",
+            "notes_used": "xxx",
+            "note_idx": null
+        }
+    },
+    "processing_time": 90.83597302436829
+}

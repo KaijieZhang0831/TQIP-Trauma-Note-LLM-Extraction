@@ -1,0 +1,68 @@
+2026-02-23 02:45:45,540 - INFO - Found credentials from IAM Role: ec2-tqip
+2026-02-23 02:45:45,765 - INFO - Loaded 5 patient features
+2026-02-23 02:45:45,765 - INFO - [1/5] Processing MRN xxxx for patient with 60 notes.
+2026-02-23 02:45:49,034 - INFO - FOUND complication 'ALCOHOL WITHDRAWAL SYNDROME'
+2026-02-23 02:45:55,912 - INFO - FOUND complication 'DVT/THROMBOPHLEBITIS'
+2026-02-23 02:46:21,229 - INFO - FOUND complication 'PULMONARY EMBOLISM'
+2026-02-23 02:46:30,740 - INFO - [1/5] Finished processing MRN: xxx. Time taken: 44.97425317764282 seconds
+2026-02-23 02:46:30,740 - INFO - [2/5] Processing MRN xxx for patient with 89 notes.
+2026-02-23 02:46:46,728 - INFO - FOUND complication 'ALCOHOL WITHDRAWAL SYNDROME'
+2026-02-23 02:46:51,411 - INFO - FOUND complication 'DELIRIUM'
+2026-02-23 02:47:30,208 - INFO - [2/5] Finished processing MRN: xxx. Time taken: 59.46747422218323 seconds
+2026-02-23 02:47:30,208 - INFO - [3/5] Processing MRN xxx for patient with 58 notes.
+2026-02-23 02:47:41,126 - INFO - FOUND complication 'ALCOHOL WITHDRAWAL SYNDROME'
+2026-02-23 02:47:54,360 - INFO - FOUND complication 'UNPLANNED ADMISSION TO ICU'
+2026-02-23 02:48:16,103 - INFO - [3/5] Finished processing MRN: xxx. Time taken: 45.89385271072388 seconds
+2026-02-23 02:48:16,103 - INFO - [4/5] Processing MRN xxx for patient with 95 notes.
+2026-02-23 02:48:23,318 - INFO - FOUND complication 'DELIRIUM'
+2026-02-23 02:48:41,857 - INFO - FOUND complication 'PRESSURE ULCER'
+2026-02-23 02:48:54,579 - INFO - FOUND complication 'ACUTE KIDNEY INJURY'
+2026-02-23 02:49:23,823 - INFO - [4/5] Finished processing MRN: xxx. Time taken: 67.71909856796265 seconds
+2026-02-23 02:49:23,823 - INFO - [5/5] Processing MRN xxx for patient with 86 notes.
+2026-02-23 02:49:46,657 - INFO - FOUND complication 'UNPLANNED ADMISSION TO ICU'
+2026-02-23 02:50:16,805 - INFO - FOUND complication 'ARDS'
+2026-02-23 02:50:34,391 - INFO - [5/5] Finished processing MRN: xxx. Time taken: 70.56647729873657 seconds
+2026-02-23 03:19:26,004 - INFO - Found credentials from IAM Role: ec2-tqip
+2026-02-23 03:19:26,096 - INFO - Loaded 5 patient features
+2026-02-23 03:19:26,096 - INFO - [1/5] Processing MRN xxx for patient with 60 notes.
+2026-02-23 03:20:00,963 - INFO - FOUND complication 'DVT/THROMBOPHLEBITIS'
+2026-02-23 03:22:44,890 - INFO - [1/5] Finished processing MRN: xxx. Time taken: 198.79369735717773 seconds
+2026-02-23 03:22:44,890 - INFO - [2/5] Processing MRN xxx for patient with 89 notes.
+2026-02-23 03:23:14,296 - INFO - FOUND complication 'ALCOHOL WITHDRAWAL SYNDROME'
+2026-02-23 03:23:31,948 - INFO - FOUND complication 'DELIRIUM'
+2026-02-23 03:25:57,462 - INFO - [2/5] Finished processing MRN: xxx. Time taken: 192.57129454612732 seconds
+2026-02-23 03:25:57,462 - INFO - [3/5] Processing MRN xxx for patient with 58 notes.
+2026-02-23 03:29:10,667 - INFO - [3/5] Finished processing MRN: xxx. Time taken: 193.20448756217957 seconds
+2026-02-23 03:29:10,667 - INFO - [4/5] Processing MRN xxx for patient with 95 notes.
+2026-02-23 03:29:47,091 - INFO - FOUND complication 'DELIRIUM'
+2026-02-23 03:31:04,564 - INFO - FOUND complication 'PRESSURE ULCER'
+2026-02-23 03:33:30,638 - INFO - [4/5] Finished processing MRN: xxx. Time taken: 259.97092390060425 seconds
+2026-02-23 03:33:30,639 - INFO - [5/5] Processing MRN xxx for patient with 86 notes.
+2026-02-23 03:34:37,525 - INFO - FOUND complication 'UNPLANNED ADMISSION TO ICU'
+2026-02-23 03:34:53,766 - INFO - FOUND complication 'PRESSURE ULCER'
+2026-02-23 03:36:50,136 - INFO - [5/5] Finished processing MRN: xxx. Time taken: 199.4972529411316 seconds
+2026-03-06 09:09:17,902 - INFO - Found credentials from IAM Role: ec2-tqip
+2026-03-06 09:09:18,007 - INFO - Loaded 5 patient features
+2026-03-06 09:09:18,007 - INFO - [1/5] Processing MRN xxx for patient with 60 notes.
+2026-03-06 09:09:26,515 - INFO - FOUND complication 'DVT/THROMBOPHLEBITIS'
+2026-03-06 09:10:03,938 - INFO - [1/5] Finished processing MRN: xxx. Time taken: 45.93073391914368 seconds
+2026-03-06 09:10:03,939 - INFO - [2/5] Processing MRN xxx for patient with 89 notes.
+2026-03-06 09:10:19,921 - INFO - FOUND complication 'ALCOHOL WITHDRAWAL SYNDROME'
+2026-03-06 09:10:28,483 - INFO - FOUND complication 'DELIRIUM'
+2026-03-06 09:11:07,451 - INFO - [2/5] Finished processing MRN: xxx. Time taken: 63.511921644210815 seconds
+2026-03-06 09:11:07,451 - INFO - [3/5] Processing MRN xxx for patient with 58 notes.
+2026-03-06 09:11:17,374 - INFO - FOUND complication 'ALCOHOL WITHDRAWAL SYNDROME'
+2026-03-06 09:11:29,344 - INFO - FOUND complication 'UNPLANNED ADMISSION TO ICU'
+2026-03-06 09:11:51,675 - INFO - [3/5] Finished processing MRN: xxx. Time taken: 44.223294734954834 seconds
+2026-03-06 09:11:51,675 - INFO - [4/5] Processing MRN xxx for patient with 95 notes.
+2026-03-06 09:11:58,825 - INFO - FOUND complication 'DELIRIUM'
+2026-03-06 09:12:18,249 - INFO - FOUND complication 'PRESSURE ULCER'
+2026-03-06 09:12:32,529 - INFO - FOUND complication 'ACUTE KIDNEY INJURY'
+2026-03-06 09:12:49,509 - INFO - FOUND complication 'VAP'
+2026-03-06 09:12:57,573 - INFO - FOUND complication 'CAUTI'
+2026-03-06 09:13:00,474 - INFO - [4/5] Finished processing MRN: xxx. Time taken: 68.7978982925415 seconds
+2026-03-06 09:13:00,474 - INFO - [5/5] Processing MRN xxx for patient with 86 notes.
+2026-03-06 09:13:23,776 - INFO - FOUND complication 'UNPLANNED ADMISSION TO ICU'
+2026-03-06 09:13:50,999 - INFO - FOUND complication 'ARDS'
+2026-03-06 09:14:09,132 - INFO - FOUND complication 'CAUTI'
+2026-03-06 09:14:11,789 - INFO - [5/5] Finished processing MRN: xxx. Time taken: 71.31386804580688 seconds

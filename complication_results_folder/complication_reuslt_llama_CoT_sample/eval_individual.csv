@@ -1,0 +1,2 @@
+csn,true_complications,predicted_complications,sensitivity (%),additional_complications (%)
+12345678910,,['UNPLANNED ADMISSION TO ICU'],"['ALCOHOL WITHDRAWAL SYNDROME', 'DELIRIUM', 'SEVERE SEPSIS', 'PULMONARY EMBOLISM', 'MYOCARDIAL INFARCTION', 'CAUTI']",0.0,100.0

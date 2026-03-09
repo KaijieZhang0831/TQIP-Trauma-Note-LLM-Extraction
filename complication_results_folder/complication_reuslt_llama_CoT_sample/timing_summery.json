@@ -1,0 +1,106 @@
+{
+  "timing": {
+    "build_notes_list": {
+      "count": 124,
+      "total_sec": 0.15940770698944107,
+      "mean_sec": 0.0012855460241083957,
+      "min_sec": 9.3122995167505e-05,
+      "max_sec": 0.004519608999544289
+    },
+    "join_notes_str": {
+      "count": 124,
+      "total_sec": 0.05196251190136536,
+      "mean_sec": 0.0004190525153335916,
+      "min_sec": 8.994997187983245e-06,
+      "max_sec": 0.0036761180017492734
+    },
+    "split_chunks": {
+      "count": 124,
+      "total_sec": 1.3412548460037215,
+      "mean_sec": 0.01081657133873969,
+      "min_sec": 0.0002716590024647303,
+      "max_sec": 0.04600984600256197
+    },
+    "filter_chunks": {
+      "count": 2232,
+      "total_sec": 220.2574517957728,
+      "mean_sec": 0.09868165403036415,
+      "min_sec": 0.0008942369968281128,
+      "max_sec": 0.7104019269972923
+    },
+    "vectorstore_build": {
+      "count": 1640,
+      "total_sec": 9642.38497630808,
+      "mean_sec": 5.879503034334195,
+      "min_sec": 0.12201598099636612,
+      "max_sec": 116.90153854499658
+    },
+    "retriever_invoke": {
+      "count": 1640,
+      "total_sec": 238.82480047206627,
+      "mean_sec": 0.14562487833662577,
+      "min_sec": 0.11485279000044102,
+      "max_sec": 7.522562311998627
+    },
+    "vectorstore_delete": {
+      "count": 1640,
+      "total_sec": 21.67203907298608,
+      "mean_sec": 0.013214657971332977,
+      "min_sec": 0.001425644997652853,
+      "max_sec": 0.21894129199790768
+    },
+    "llm_engine": {
+      "count": 1640,
+      "total_sec": 4145.879932844175,
+      "mean_sec": 2.5279755688074235,
+      "min_sec": 0.568048209999688,
+      "max_sec": 34.6266190690003
+    },
+    "llm_verifier": {
+      "count": 1509,
+      "total_sec": 681.354163380016,
+      "mean_sec": 0.4515269472365911,
+      "min_sec": 0.18813023399707163,
+      "max_sec": 11.936006256997644
+    },
+    "question_total": {
+      "count": 2232,
+      "total_sec": 14951.72520868601,
+      "mean_sec": 6.698801616794808,
+      "min_sec": 0.00111790399387246,
+      "max_sec": 119.23119232500176
+    },
+    "process_batches": {
+      "count": 124,
+      "total_sec": 14953.195373014009,
+      "mean_sec": 120.590285266242,
+      "min_sec": 8.617036261999601,
+      "max_sec": 565.0160904639997
+    },
+    "write_case_json": {
+      "count": 124,
+      "total_sec": 0.17148098401230527,
+      "mean_sec": 0.0013829111613895587,
+      "min_sec": 0.0001648540019232314,
+      "max_sec": 0.0095066339999903
+    },
+    "case_total": {
+      "count": 124,
+      "total_sec": 14953.556203251002,
+      "mean_sec": 120.59319518750809,
+      "min_sec": 8.617638691001048,
+      "max_sec": 565.0302520960031
+    }
+  },
+  "counts": {
+    "n_cases_processed": 124,
+    "n_binary_notes_total": 36483,
+    "n_med_orders_total": 22185,
+    "n_notes_passed": 58668,
+    "notes_chars_joined": 100000790,
+    "n_all_splits": 193623,
+    "n_filtered_splits_total": 70894,
+    "n_questions_with_splits": 1640,
+    "n_cases_skipped_existing": 12
+  }
+}
