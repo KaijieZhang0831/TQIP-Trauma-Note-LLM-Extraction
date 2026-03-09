@@ -1,14 +1,34 @@
-# TQIP-TRAUMA-NOTE-Extraction
+# 
 
-LLMs offer a potential solution to streamline this process. We hypothesized that a LLM could be applied to review patient charts and identify complications as defined by the Trauma Quality Improvement Program, offering an effective adjunct to manual chart reviews. This is to a complication screening pipeline driven by LLMs that can support clinical staff to construct TQIP Trauma Note Complication Reports.
+## Background & Research Question
+
+• Manual abstraction is slow and inconsistent when applied to long, noisy trauma notes, and the professional staff required for this task are costly.
+
+Our Solution: LLMs offer a potential solution to streamline this process. We hypothesized that a LLM could be applied to review patient charts and identify complications as defined by the Trauma Quality Improvement Program, offering an effective adjunct to manual chart reviews. This is to a complication screening pipeline driven by LLMs that can support clinical staff to construct TQIP Trauma Note Complication Reports.
+
+• Key constraint: secure setting, no external online APIs beyond AWS Bedrock, and no local GPU deployment.
+
+• We compare inference-time strategies under the same retrieval pipeline.
+
+• We ask whether an LLM can detect NTDS complications with auditable note evidence.
+
+<p align="center">
+  <table>
+    <tr>
+      <td align="center"><img src="image/DSC_Final_Pitch_TQIP_B08_3.png" alt="Overview" width="1000"/></td>
+    </tr>
+  </table>
+</p>
 
 Website Link: https://kaijiezhang0831.github.io/TQIP-Trauma-Note-LLM-Extraction/
 ## Data
-Because real clinical data, especially trauma notes and medication orders, are protected and sensitive, all of our data, the patient features, were stored in monitored and protected environment. The Prompt with CoT were created based on the [National Trauma Data Standard Data Dictionary 2025 Admission](https://health.wyo.gov/wp-content/uploads/2025/01/2025-Data-Dictionary.pdf) as the instruction.
+
+## Data Collection and Access
+Because real clinical data, especially trauma notes and medication orders, are protected and sensitive, all of our data, the patient features, were stored in monitored and protected environment. The Prompt with CoT were created based on the [National Trauma Data Standard Data Dictionary 2025 Admission](https://health.wyo.gov/wp-content/uploads/2025/01/2025-Data-Dictionary.pdf) as the instruction. Note: Other clinical notes dataset such as MIMIC-III won't be able to apply to this case because they serve different purposes.
 
 The LLM we used is "us.deepseek.r1-v1:0" and the embedding we used is "amazon.titan-embed-text-v2:0" via Amazon Bedrock.
 
-### patient_features
+### Required file 1: patient_features
 `patient_features.json` is required for the experinment, where Notes were retrieved using FHIR R4. A sample format is below. Make sure your format align for successful testing:
 <pre>
   <code>
@@ -78,7 +98,7 @@ The LLM we used is "us.deepseek.r1-v1:0" and the embedding we used is "amazon.ti
     </code>
 </pre>
 
-### ground_truth.csv
+### Required file 2: ground_truth.csv
 `ground_truth.csv` is required for the experinment. This is constructed by professional clinical staff. A sample format is below. Make sure your format align for successful testing:
 <pre>
   <code>
@@ -88,7 +108,7 @@ CSN_000002,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0
     </code>
 </pre>
 
-## File Structure
+## Directory structure Explaination
 <pre>
   <code>
     📁 Project Root
@@ -109,7 +129,7 @@ CSN_000002,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0
     </code>
 </pre>
 
-## Introduction
+## Introduction to the Experinment
 Our project explores whether large language models can support trauma registry abstraction by identifying the 18 NTDS-defined complications from clinical documentation. Because protected trauma notes cannot be used directly for development, we built an end-to-end pipeline that generates realistic synthetic notes with ground-truth labels and evaluates an LLM-based extractor. We report initial benchmarking results and outline improvements to retrieval, chunking, and decision voting to close the gap between controlled tests and real-world performance.
 
 <p align="center">
@@ -120,7 +140,7 @@ Our project explores whether large language models can support trauma registry a
   </table>
 </p>
 
-## Hot to Use
+## How to Use?
 ### 1. Environment set up
 We strongly recommand using Linux for the experinment. To set up the conda environment for Linux, type
 ```
@@ -139,11 +159,11 @@ sudo yum install -y tmux
 ### 2. Run and Evaluate
 Make sure `patient_features.json` is in the root folder with correct format. Simply run,
 ```
-python3 main.py
+python3 main_baseline.py
 ```
 in the terminal. It will take some time and you can review the progress by the log. More optional are avaliable, such as:
 ```
-python3 main.py | tee run_test.log
+python3 main_baseline | tee run_test.log
 ```
 
 After that, you will get a new folder in the root named `complication_results_wt_xxx/`. They are the result/prediction your model made. For the evaluation step, make sure `ground_truth.csv` is in the root folder with correct format and the selected `complication_results_wt_xxx/` path is correct in `eval_test.py`. Then run,
@@ -154,7 +174,23 @@ or optionally,
 ```
 python3 eval_test.py | tee eval_test.log
 ```
+#### Run experinment with different structures
+To test Best-of-N, Beam Search, and DVTS, you are welcome to run:
+```
+python3 main_CoT.py | tee run_test.log
+```
+,
+```
+python3 main_Beam.py | tee run_test.log
+```
+, and
+```
+python3 main_DVTS.py | tee run_test.log
+```
+, which have file names quite straightforward. 
 
+#### File path management
+To make results from multiple experiments managable,
 
 ## Experiment Method
 We evaluate an LLM-based extractor that predicts 18 NTDS-defined trauma complications from each encounter’s clinical documentation. For each case, we aggregate all available note text into a single input and split it into overlapping chunks to support retrieval. We embed chunks, build a per-case vectorstore, and retrieve the most relevant evidence for each complication before prompting the LLM to output a binary decision. To improve robustness, we run multiple independent LLM calls per complication and apply threshold voting to produce the final label. We compute TP/FP/FN/TN across all complications and report sensitivity, PPV, and NPV at both the per-complication and overall levels. We also profile runtime by module to identify the dominant latency contributors and prioritize optimization.
@@ -202,6 +238,6 @@ Performance (20 samples: "us.deepseek.r1-v1:0" + "amazon.titan-embed-text-v2:0" 
 
 
 ## Contribution
-- Kaijie Zhang: I completed setting up the codebase and updated the pipeline to run the first end-to-end experiment. I also refactored the experiment logging and evaluation code. In addition, I proposed several follow-up improvements and am actively developing them.
+- Kaijie Zhang: I was responsible for the model inference pipeline, implementation, and experimental evaluation of the different test-time methods, excluding the filter optimization component. I also led all visualization work and created the poster, including the figures, result presentation, and overall visual layout.
 
-- Viv Somani:  I completed sections 1 and 2 of the report. I also assisted in setting up the codebase.
+- Viv Somani:  I created an improved scheme to perform initial regular expressions chunk filtering. In addition, I wrote the introduction and methods section -- and assisted in writing several other sections of this report.
