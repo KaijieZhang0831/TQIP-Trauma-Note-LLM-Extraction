@@ -113,19 +113,42 @@ CSN_000002,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0
   <code>
     📁 Project Root
       ├── README.md
-      ├── main.py
-      ├── preprocess_export.py
-      ├── refine.py
+      ├── main_baseline.py
+      ├── main_CoT.py
+      ├── main_Beam.py
+      ├── main_DVTS.py
       ├── eval_test.py
-      ├── patient_features.json
-      ├── ground_truth.csv
       ├── environment.yml
       ├── archive
-      ├── complication_results_wt_test
-      │   └── [csn1].json
-      │   └── [csn2].json
+      ├── data
+      │   ├── ground_truth.csv
+      │   ├── features_folder
+      │   │   ├── patient_features.json
+      │   │   └── [...]
+      │   └── prompt
+      │       ├── CoT_prompt.json
+      │       └── atmoic_prompt.json
+      ├── other_tools
+      │   ├── data_manipulation.ipynb
+      │   ├── preprocess_export.py
+      │   ├── refine.py
+      │   ├── test.py
+      │   └── visualization.ipynb
+      ├── complication_results_folder
+      │   └── complication_results_wt_test1
+      │   │   ├── vote_log.csv
+      │   │   ├── eval_per_complication.json
+      │   │   ├── eval_individual.csv
+      │   │   ├── timing_summery.json
+      │   │   ├── [patient1_mrn].json
+      │   │   └── [...]
+      │   ├── complication_results_wt_test2
       │   └── [...]
-      └── notebooks.ipynb
+      ├── complication_results_wt_test
+      │   ├── [csn1].json
+      │   ├── [csn2].json
+      │   └── [...]
+      └── question_dict.py
     </code>
 </pre>
 
@@ -179,18 +202,29 @@ To test Best-of-N, Beam Search, and DVTS, you are welcome to run:
 ```
 python3 main_CoT.py | tee run_test.log
 ```
-,
 ```
 python3 main_Beam.py | tee run_test.log
 ```
-, and
 ```
 python3 main_DVTS.py | tee run_test.log
 ```
 , which have file names quite straightforward. 
 
 #### File path management
-To make results from multiple experiments managable,
+To make results from multiple experiments managable, you should edit file path for different experinments. Here are some significant file paths:
+main - features input:
+```
+fhir_data = pd.read_json("./features_folder/patient_features.json")
+```
+main - result output:
+```
+output_dir = 'complication_results_folder/complication_results_holistic'
+```
+eval - read output:
+```
+output_dir = 'complication_results_folder/complication_results_holistic'
+```
+
 
 ## Experiment Method
 We evaluate an LLM-based extractor that predicts 18 NTDS-defined trauma complications from each encounter’s clinical documentation. For each case, we aggregate all available note text into a single input and split it into overlapping chunks to support retrieval. We embed chunks, build a per-case vectorstore, and retrieve the most relevant evidence for each complication before prompting the LLM to output a binary decision. To improve robustness, we run multiple independent LLM calls per complication and apply threshold voting to produce the final label. We compute TP/FP/FN/TN across all complications and report sensitivity, PPV, and NPV at both the per-complication and overall levels. We also profile runtime by module to identify the dominant latency contributors and prioritize optimization.
@@ -198,43 +232,44 @@ We evaluate an LLM-based extractor that predicts 18 NTDS-defined trauma complica
 
 ## Evaluation Output Sample
 ### Sensitive evaluation sections (e.g. those containing patients' mrn/csn) are excluded.
-Performance (20 samples: "us.deepseek.r1-v1:0" + "amazon.titan-embed-text-v2:0" via Amazon Bedrock)
-| Complication                         |           Sensitivity |   PPV |   NPV |
-| ------------------------------------ | --------------------: | ----: | ----: |
-| Alcohol Withdrawal Syndrome          |                 0.857 | 0.667 | 0.909 |
-| Delirium                             |                 1.000 | 0.667 | 1.000 |
-| DVT/Thrombophlebitis                 |                 0.333 | 1.000 | 0.895 |
-| Stroke/CVA                           |                    NA | 0.000 | 1.000 |
-| Unplanned Intubation                 |                 1.000 | 0.200 | 1.000 |
-| Unplanned Admission to ICU           |                 1.000 | 0.600 | 1.000 |
-| Severe Sepsis                        |                    NA | 0.000 | 1.000 |
-| Pressure Ulcer                       |                    NA | 0.000 | 1.000 |
-| Cardiac Arrest with CPR              |                 1.000 | 1.000 | 1.000 |
-| Acute Kidney Injury                  |                    NA | 0.000 | 1.000 |
-| Unplanned Visit to OR                |                    NA | 0.000 | 1.000 |
-| Pulmonary Embolism                   |                    NA | 0.000 | 1.000 |
-| Myocardial Infarction                |                    NA |    NA | 1.000 |
-| VAP                                  |                    NA | 0.000 | 1.000 |
-| ARDS                                 |                    NA |    NA | 1.000 |
-| CAUTI                                |                    NA | 0.000 | 1.000 |
-| Osteomyelitis                        |                    NA |    NA | 1.000 |
-| Superficial Incisional SSI           |                    NA |    NA | 1.000 |
-| **Overall Sensitivity**              |     **0.857 (18/21)** |       |       |
-| **Total TP / FP / FN / TN**          | **18 / 40 / 3 / 299** |       |       |
-| **Average Additional Complications** |              **200%** |       |       |
+### Table 1: Complication-level performance summary
 
+| Complication | Sensitivity | PPV | NPV |
+| --- | ---: | ---: | ---: |
+| Alcohol Withdrawal Syndrome | 0.429 | 0.750 | 0.840 |
+| Delirium | 0.895 | 0.370 | 0.951 |
+| DVT/Thrombophlebitis | 0.625 | 0.625 | 0.940 |
+| Stroke/CVA | 0.733 | 0.314 | 0.971 |
+| Unplanned Intubation | 0.889 | 0.267 | 0.982 |
+| Unplanned Admission to ICU | 0.750 | 0.340 | 0.950 |
+| Severe Sepsis | 1.000 | 0.262 | 1.000 |
+| Pressure Ulcer | 0.714 | 0.128 | 0.985 |
+| Cardiac Arrest with CPR | 1.000 | 0.500 | 1.000 |
+| Acute Kidney Injury | 0.778 | 0.206 | 0.986 |
+| Unplanned Visit to OR | 1.000 | 0.224 | 1.000 |
+| Pulmonary Embolism | 0.500 | 0.040 | 0.993 |
+| Myocardial Infarction | 0.667 | 0.111 | 0.994 |
+| VAP | 0.333 | 0.167 | 0.947 |
+| ARDS | 0.800 | 0.471 | 0.987 |
+| CAUTI | 0.500 | 0.154 | 0.988 |
+| Osteomyelitis | 1.000 | 0.400 | 1.000 |
+| Superficial Incisional SSI | 0.667 | 0.111 | 0.994 |
 
-### Time Analysis (5 samples)
-| Module                        |      Total Time (sec) |    Mean Time | % of Total Runtime |
-| ----------------------------- | --------------------: | -----------: | -----------------: |
-| LLM Engine                    |                690.08 | 12.32 / call |              79.7% |
-| Vectorstore Build (Embedding) |                166.67 | 3.09 / build |              19.3% |
-| Retriever Invoke              |                  7.56 | 0.14 / query |               0.9% |
-| Chunk Filtering               |                  0.52 | 0.006 / call |              0.06% |
-| Text Splitting                |                 0.015 | 0.003 / case |             0.002% |
-| Other Overhead                |                  0.40 |           -- |              0.05% |
-| **Total Runtime (5 cases)**   | **865.25 sec (100%)** |              |                    |
+### Table 2: Results by task, including Alcohol Withdrawal Syndrome
 
+| Experiment | Sens. (%) | N (%) | NPV (%) | PPV (%) | Time (s) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Original (No CoT, 5-vote majority) | 85.71 | 250.00 | 98.97 | 26.47 | 1425.93 |
+| Best-of-N using CoT (3 candidates) | 61.90 | 140.00 | 97.49 | 31.71 | 1476.67 |
+| Beam Search using atomic decision tree (3 candidates, beam width = 3) | 38.10 | 65.00 | 96.17 | 38.10 | 1292.40 |
+
+### Table 3: Results by task, not including Alcohol Withdrawal Syndrome
+
+| Experiment | Sens. (%) | N (%) | NPV (%) | PPV (%) | Time (s) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Original (No CoT, 5-vote majority) | 85.71 | 314.29 | 99.30 | 21.43 | 1425.93 |
+| Best-of-N using CoT (3 candidates) | 78.57 | 200.00 | 99.00 | 28.21 | 1476.67 |
+| Beam Search using atomic decision tree (3 candidates, beam width = 3) | 57.14 | 85.71 | 98.13 | 40.00 | 1292.40 |
 
 
 ## Contribution
