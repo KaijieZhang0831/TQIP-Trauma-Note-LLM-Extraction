@@ -1,0 +1,123 @@
+Eval cases: 10
+Individual Results:
+[Deleted for Data Security]
+
+[10 rows x 5 columns]
+
+Aggregated Metrics:
+Overall Sensitivity: 44.00%
+Average % of Additional Complications: 330.00%
+Top 3 Most Predicted Complications: [('UNPLANNED ADMISSION TO ICU', 10), ('DELIRIUM', 6), ('UNPLANNED VISIT TO THE OR', 4)]
+Total time in seconds: 3316.176517009735
+=========================
+ALCOHOL WITHDRAWAL SYNDROME
+Sensitivity: 0/1 (0.0)
+NPV: 7/8 (0.875)
+PPV: 0/2 (0.0)
+=========================
+=========================
+DELIRIUM
+Sensitivity: 2/2 (1.0)
+NPV: 4/4 (1.0)
+PPV: 2/6 (0.3333333333333333)
+=========================
+=========================
+DVT/THROMBOPHLEBITIS
+Sensitivity: 1/1 (1.0)
+NPV: 8/8 (1.0)
+PPV: 1/2 (0.5)
+=========================
+=========================
+STROKE/CVA
+Sensitivity: 0/0 (NA)
+NPV: 8/8 (1.0)
+PPV: 0/2 (0.0)
+=========================
+=========================
+UNPLANNED INTUBATION
+Sensitivity: 0/2 (0.0)
+NPV: 5/7 (0.7142857142857143)
+PPV: 0/3 (0.0)
+=========================
+=========================
+UNPLANNED ADMISSION TO ICU
+Sensitivity: 1/1 (1.0)
+NPV: 0/0 (NA)
+PPV: 1/10 (0.1)
+=========================
+=========================
+SEVERE SEPSIS
+Sensitivity: 1/1 (1.0)
+NPV: 7/7 (1.0)
+PPV: 1/3 (0.3333333333333333)
+=========================
+=========================
+PRESSURE ULCER
+Sensitivity: 1/1 (1.0)
+NPV: 7/7 (1.0)
+PPV: 1/3 (0.3333333333333333)
+=========================
+=========================
+CARDIAC ARREST WITH CPR
+Sensitivity: 0/0 (NA)
+NPV: 7/7 (1.0)
+PPV: 0/3 (0.0)
+=========================
+=========================
+ACUTE KIDNEY INJURY
+Sensitivity: 1/1 (1.0)
+NPV: 9/9 (1.0)
+PPV: 1/1 (1.0)
+=========================
+=========================
+UNPLANNED VISIT TO THE OR
+Sensitivity: 1/2 (0.5)
+NPV: 5/6 (0.8333333333333334)
+PPV: 1/4 (0.25)
+=========================
+=========================
+PULMONARY EMBOLISM
+Sensitivity: 0/0 (NA)
+NPV: 9/9 (1.0)
+PPV: 0/1 (0.0)
+=========================
+=========================
+MYOCARDIAL INFARCTION
+Sensitivity: 0/0 (NA)
+NPV: 10/10 (1.0)
+PPV: 0/0 (NA)
+=========================
+=========================
+VAP
+Sensitivity: 2/10 (0.2)
+NPV: 0/8 (0.0)
+PPV: 2/2 (1.0)
+=========================
+=========================
+ARDS
+Sensitivity: 1/3 (0.3333333333333333)
+NPV: 6/8 (0.75)
+PPV: 1/2 (0.5)
+=========================
+=========================
+CAUTI
+Sensitivity: 0/0 (NA)
+NPV: 10/10 (1.0)
+PPV: 0/0 (NA)
+=========================
+=========================
+OSTEOMYELITIS
+Sensitivity: 0/0 (NA)
+NPV: 10/10 (1.0)
+PPV: 0/0 (NA)
+=========================
+=========================
+SUPERFICIAL INCIS SURG SITE INF
+Sensitivity: 0/0 (NA)
+NPV: 10/10 (1.0)
+PPV: 0/0 (NA)
+=========================
+TP TOTAL: 11
+TN TOTAL: 122
+FP TOTAL: 33
+FN TOTAL: 14
