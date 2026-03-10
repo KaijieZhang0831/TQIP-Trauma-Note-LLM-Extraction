@@ -29,7 +29,10 @@
     <!-- TODO: Replace with your institution or lab name -->
     <meta property="og:site_name" content="UC San Diego" />
     <!-- TODO: Same as paper title above -->
-    <meta property="og:title" content="PAPER_TITLE" />
+    <meta
+      property="og:title"
+      content="Large Language Models for Trauma Note Quality - Kaijie Zhang, Viv Somani"
+    />
     <!-- TODO: Same as description above -->
     <meta
       property="og:description"
@@ -58,7 +61,6 @@
     <meta property="article:tag" content="KEYWORD2" />
 
     <!-- Academic/Research Specific -->
-    <meta name="citation_title" content="PAPER_TITLE" />
     <meta name="citation_author" content="Zhang, Kaijie" />
     <meta name="citation_author" content="Somani, Viv" />
     <meta name="citation_publication_date" content="2024" />
@@ -162,7 +164,7 @@
     <script defer src="static/js/index.js"></script>
 
     <!-- Structured Data for Academic Papers -->
-    <script type="application/ld+json">
+    <!-- <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "ScholarlyArticle",
@@ -219,7 +221,7 @@
           }
         ]
       }
-    </script>
+    </script> -->
 
     <!-- Website/Organization Structured Data -->
     <script type="application/ld+json">
@@ -279,7 +281,6 @@
 
                 <div class="is-size-5 publication-authors">
                   <span class="author-block">UC San Diego<br /></span>
-                  <!-- TODO: Remove this line if no equal contribution -->
                   <span class="eql-cntrb"
                     ><small
                       ><br /><sup>*</sup>Indicates Equal Contribution</small
@@ -340,26 +341,57 @@
         <div class="container is-max-desktop">
           <div class="columns is-centered has-text-centered">
             <div class="column is-four-fifths">
-              <h2 class="title is-3">Introduction</h2>
-              <figure class="image mb-5">
-                <img src="static/images/llm_system_architecture.png" alt="Pipeline diagram" />
-              </figure>
+              <h2 class="title is-3">1. Introduction</h2>
+              <h3 class="title is-4">1.1 Motivation</h3>
               <div class="content has-text-justified">
-                <p>
-                  An effective surgical quality program relies heavily on
-                  maintaining a comprehensive patient registry to track outcomes
-                  and benchmark against national standards. The American College
-                  of Surgeons Committee on Trauma requires trauma centers to
-                  maintain these registries for accreditation, which are
-                  critical for reporting trauma quality metrics. However,
-                  traditional registries are labor-intensive and costly.
-                  Artificial intelligence, particularly Large Language Models
-                  (LLMs), offers a potential solution to streamline this
-                  process. We hypothesized that a LLM could be applied to review
-                  patient charts and identify complications as defined by the
-                  Trauma Quality Improvement Program, offering an effective
-                  adjunct to manual chart reviews.
-                </p>
+                <ul>
+                  <li>
+                    Maintaining healthcare trauma quality standards are
+                    <strong>costly but important</strong>. It is incredibly
+                    important to measure and improve hospital outcomes, but
+                    large hospitals need to employ about 5 registrars
+                    specifically for this, which is costly.
+                  </li>
+                  <li>
+                    Large Language Models (LLMs) present us with an opportunity
+                    to reduce the cost to hospitals for these outputs.
+                  </li>
+                  <li>
+                    We believe that hospital care quality would substantially
+                    improve if they had such information and therefore, believed
+                    that this project would be especially useful to hospital
+                    staff.
+                  </li>
+                </ul>
+              </div>
+              <h3 class="title is-4">1.2 At A Glance</h3>
+              <div class="content has-text-justified">
+                <ul>
+                  <li>
+                    We tested our LLMs ability to label long medical notes for
+                    American of Surgeons Trauma Quality Improvement Program (or
+                    ACS TQIP) taken over a 22 month span between 2023 to 2024.
+                  </li>
+                  <li>
+                    Since these notes tended to be long, we obtained relevant
+                    notes through a two-step filtration process of first using
+                    fuzzy matching with regular expressions and then performing
+                    Retrieval Augmented Generation (RAG). This significantly
+                    lowered the number of notes sent to the LLM.
+                  </li>
+                  <li>
+                    We tested out several test-time inference techniques to
+                    improve the LLMs' output performance including Chain of
+                    Thought with a reward model, beam search, diverse verifier
+                    tree search (DVTS).
+                  </li>
+                  <li>
+                    Unfortunately, None of the techniques tried thus far are
+                    likely to be successful enough to replace registrars. We
+                    hope future work can improve our overall performance for
+                    each of these methods.
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -372,6 +404,12 @@
           <div class="columns is-centered has-text-centered">
             <div class="column is-four-fifths">
               <h2 class="title is-3">Methods</h2>
+              <figure class="image mb-5">
+                <img
+                  src="static/images/llm_system_architecture.png"
+                  alt="Pipeline diagram"
+                />
+              </figure>
               <div class="content has-text-justified">
                 <p>
                   Our primary outcome was agreement between the LLM and manual
