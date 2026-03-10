@@ -110,7 +110,7 @@ CSN_000002,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0
     </code>
 </pre>
 
-## Directory structure Explaination
+## Directory structure Explaination (important)
 <pre>
   <code>
     📁 Project Root
@@ -150,6 +150,8 @@ CSN_000002,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0
       │   ├── [csn1].json
       │   ├── [csn2].json
       │   └── [...]
+      ├── .gitignore 
+      ├── requirement_bedrock_py39.txt
       └── question_dict.py
     </code>
 </pre>
@@ -160,7 +162,7 @@ Our project explores whether large language models can support trauma registry a
 <p align="center">
   <table>
     <tr>
-      <td align="center"><img src="image/Intro_Pipe.jpg" alt="Overview" width="1000"/></td>
+      <td align="center"><img src="image/pipeline_tqip_arch.png" alt="Overview" width="1000"/></td>
     </tr>
   </table>
 </p>
@@ -277,6 +279,9 @@ Note: Sensitive evaluation sections (e.g. those containing patients' mrn/csn) ar
 | Beam Search using atomic decision tree (3 candidates, beam width = 3) | 57.14 | 85.71 | 98.13 | 40.00 | 1292.40 |
 
 In addition, in tools folder, you are welcome to use some sections written in `visualization.ipynb` to produce visualizations presented in our poster.
+
+## About Commitment and Code Repo
+Due to data security reasons, we write our code and run our experiment on AWS EC2 instance and share data/evaluation/code by S3 storage service. Therefore, the code maintenance for this repo is periodic and usually commited by one person of the team. All teammates are closely collaborate every week through AWS Cloud and Slack. Plz review the history of meeting notes for additional Evidence of collaboration.
 
 
 ## Contribution
