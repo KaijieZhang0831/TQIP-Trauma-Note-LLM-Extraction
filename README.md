@@ -1,4 +1,4 @@
-# 
+# Large Language Models for Trauma Care Quality: NTDS Complication Abstraction
 
 ## Background & Research Question
 
@@ -24,7 +24,9 @@ Website Link: https://kaijiezhang0831.github.io/TQIP-Trauma-Note-LLM-Extraction/
 ## Data
 
 ## Data Collection and Access
-Because real clinical data, especially trauma notes and medication orders, are protected and sensitive, all of our data, the patient features, were stored in monitored and protected environment. The Prompt with CoT were created based on the [National Trauma Data Standard Data Dictionary 2025 Admission](https://health.wyo.gov/wp-content/uploads/2025/01/2025-Data-Dictionary.pdf) as the instruction. Note: Other clinical notes dataset such as MIMIC-III won't be able to apply to this case because they serve different purposes.
+Because real clinical data, especially trauma notes and medication orders, are protected and sensitive, all of our data, the patient features, were stored in monitored and protected environment. The Prompt with CoT were created based on the [National Trauma Data Standard Data Dictionary 2025 Admission](https://health.wyo.gov/wp-content/uploads/2025/01/2025-Data-Dictionary.pdf) as the instruction. Note: Other clinical notes dataset such as MIMIC-III won't be able to apply to this case because they serve different purposes. We cannot provide any way to access the raw data. The raw data is belong to UCSD Health and is under protection according to local policies. 
+
+However, we can provide a platform of required data files as a reference, and processed log examples during experiments. These references can help you better understand the data & research.
 
 The LLM we used is "us.deepseek.r1-v1:0" and the embedding we used is "amazon.titan-embed-text-v2:0" via Amazon Bedrock.
 
@@ -230,8 +232,11 @@ output_dir = 'complication_results_folder/complication_results_holistic'
 We evaluate an LLM-based extractor that predicts 18 NTDS-defined trauma complications from each encounter’s clinical documentation. For each case, we aggregate all available note text into a single input and split it into overlapping chunks to support retrieval. We embed chunks, build a per-case vectorstore, and retrieve the most relevant evidence for each complication before prompting the LLM to output a binary decision. To improve robustness, we run multiple independent LLM calls per complication and apply threshold voting to produce the final label. We compute TP/FP/FN/TN across all complications and report sensitivity, PPV, and NPV at both the per-complication and overall levels. We also profile runtime by module to identify the dominant latency contributors and prioritize optimization.
 
 
-## Evaluation Output Sample
-### Sensitive evaluation sections (e.g. those containing patients' mrn/csn) are excluded.
+## Expected outputs: Evaluation and Visualization
+
+After evaluation test, you might see detailed the performance matrix inside of log files in the root and selected output path, isupporting calculation of Sensitivity, PPV, and NPV if you are interested. For details, please check sample files provided. Also, these tables are something you can derived from them:
+
+Note: Sensitive evaluation sections (e.g. those containing patients' mrn/csn) are excluded.
 ### Table 1: Complication-level performance summary
 
 | Complication | Sensitivity | PPV | NPV |
@@ -270,6 +275,8 @@ We evaluate an LLM-based extractor that predicts 18 NTDS-defined trauma complica
 | Original (No CoT, 5-vote majority) | 85.71 | 314.29 | 99.30 | 21.43 | 1425.93 |
 | Best-of-N using CoT (3 candidates) | 78.57 | 200.00 | 99.00 | 28.21 | 1476.67 |
 | Beam Search using atomic decision tree (3 candidates, beam width = 3) | 57.14 | 85.71 | 98.13 | 40.00 | 1292.40 |
+
+In addition, in tools folder, you are welcome to use some sections written in `visualization.ipynb` to produce visualizations presented in our poster.
 
 
 ## Contribution
