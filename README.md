@@ -110,49 +110,51 @@ CSN_000002,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0
     </code>
 </pre>
 
-## Directory structure Explaination (important)
+## Directory structure Explaination (Important!)
 <pre>
   <code>
     📁 Project Root
-      ├── README.md
-      ├── main_baseline.py
-      ├── main_CoT.py
-      ├── main_Beam.py
-      ├── main_DVTS.py
-      ├── eval_test.py
-      ├── environment.yml
-      ├── archive
-      ├── data
-      │   ├── ground_truth.csv
-      │   ├── features_folder
-      │   │   ├── patient_features.json
-      │   │   └── [...]
-      │   └── prompt
-      │       ├── CoT_prompt.json
-      │       └── atmoic_prompt.json
-      ├── other_tools
-      │   ├── data_manipulation.ipynb
-      │   ├── preprocess_export.py
-      │   ├── refine.py
-      │   ├── test.py
-      │   └── visualization.ipynb
-      ├── complication_results_folder
-      │   └── complication_results_wt_test1
-      │   │   ├── vote_log.csv
-      │   │   ├── eval_per_complication.json
-      │   │   ├── eval_individual.csv
-      │   │   ├── timing_summery.json
-      │   │   ├── [patient1_mrn].json
-      │   │   └── [...]
-      │   ├── complication_results_wt_test2
-      │   └── [...]
-      ├── complication_results_wt_test
-      │   ├── [csn1].json
-      │   ├── [csn2].json
-      │   └── [...]
-      ├── .gitignore 
-      ├── requirement_bedrock_py39.txt
-      └── question_dict.py
+      ├── README.md                         # project overview
+      ├── main_baseline.py                  # baseline voting inference pipeline, Modular design could be applied to other experiments
+      ├── main_CoT.py                       # Best-of-N CoT inference runner, note that all below experinments use different arch, we use seperated module
+      ├── main_Beam.py                      # atomic beam-search tree traversal
+      ├── main_DVTS.py                      # DVTS diverse verifier tree search
+      ├── eval_test.py                      # evaluation against ground truth
+      ├── bedrock_llm_router.py             # Modular component used for main, enforce llm to provide legal output format
+      ├── environment.yml                   # conda environment dependencies spec
+      ├── archive/                          # old scripts and backups, hisotical records
+      ├── data/                             # datasets and input resources
+      │   ├── ground_truth.csv              # labeled complications per encounter
+      │   ├── features_folder/              # stored patient feature JSON files
+      │   │   ├── patient_features.json     # encounter-level feature JSON corpus
+      │   │   └── [...]                     # additional feature subsets/exports
+      │   └── prompt/                       # prompt templates and dictionaries
+      │       ├── CoT_prompt.json           # CoT full-tree prompt templates
+      │       └── atmoic_prompt.json        # atomic node-level prompt templates
+      ├── other_tools/                      # utilities for data and plots (optional)
+      │   ├── data_manipulation.ipynb       # dataset slicing and exports
+      │   ├── preprocess_export.py          # preprocess raw data to JSON
+      │   ├── refine.py                     # refine filters and regex rules
+      │   ├── test.py                       # quick sanity checks and demos
+      │   └── visualization.ipynb           # figures, tables, and plots
+      ├── complication_results_folder/      # experiment outputs and logs
+      │   ├── complication_results_wt_test1/ # SAMPLE 1 experiment's result
+      │   │   ├── vote_log.csv              # per-call voting and metadata log
+      │   │   ├── eval_per_complication.json # metrics grouped by complication
+      │   │   ├── eval_individual.csv       # per-encounter prediction records against groundtruth
+      │   │   ├── timing_summary.json       # runtime breakdown by stage
+      │   │   ├── [patient1_mrn].json       # per-encounter prediction JSON
+      │   │   └── [...]                     # remaining encounter outputs
+      │   ├── complication_results_wt_test2/ #  SAMPLE another 1 experiment's result
+      │   │   └── [...]                     # ...
+      │   └── complication_results_wt_test/  # ...
+      │       ├── [csn1].json               # ...
+      │       ├── [csn2].json               # ...
+      │       └── [...]                     # ...
+      ├── .gitignore                        # git ignored files and folders
+      ├── requirement_bedrock_py39.txt      # pip requirements for the project
+      ├── inspect_chunks.py                 # debug retrieved evidence chunks (for Unit Test for filter design)
+      └── question_dict.py                  # Modular, complication questions and filters
     </code>
 </pre>
 

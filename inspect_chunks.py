@@ -66,9 +66,9 @@ def filter_chunks(chunks, filters, excluders=[], filter_case=None):
 
     return filtered_notes
 
-# ---------------------------------------------------------------------------
+
 # Data loading (mirrors main.py lines 480-519)
-# ---------------------------------------------------------------------------
+
 def load_patient_bundle(data_path: str, target_csn: str):
     """Load patient_features JSON and return the bundle for target_csn."""
     try:
@@ -108,9 +108,9 @@ def extract_notes(bundle) -> list:
     return notes
 
 
-# ---------------------------------------------------------------------------
+
 # Output generation
-# ---------------------------------------------------------------------------
+
 def build_report(csn: str, data_path: str, all_chunks: list, results: dict, show_match: bool = False) -> str:
     lines = []
 
@@ -155,9 +155,7 @@ def build_report(csn: str, data_path: str, all_chunks: list, results: dict, show
     return "\n".join(lines)
 
 
-# ---------------------------------------------------------------------------
 # Main
-# ---------------------------------------------------------------------------
 def main():
     parser = argparse.ArgumentParser(
         description="Inspect regex-filtered chunks for a patient CSN (no LLM/AWS needed)."
