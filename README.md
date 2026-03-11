@@ -285,6 +285,8 @@ In addition, in tools folder, you are welcome to use some sections written in `v
 ## About Commitment and Code Repo
 Due to data security reasons, we write our code and run our experiment on AWS EC2 instance and share data/evaluation/code by S3 storage service. Therefore, the code maintenance for this repo is periodic and usually commited by one person of the team. All teammates are closely collaborate every week through AWS Cloud and Slack. Plz review the history of meeting notes for additional Evidence of collaboration.
 
+## Progress
+Over the quarter, we reproduced the baseline TQIP LLM pipeline on EC2 and rebuilt the evaluation workflow to verify confusion matrices and reported metrics as a stable baseline. We then conducted systematic error stratification and taxonomy across all 18 complications, generating per-complication TP/FP/FN/TN analyses and representative note samples to diagnose failure modes. Based on these findings, we implemented and tested a set of modular interventions (e.g., retrieval and filtering improvements plus multiple LLM decision strategies), keeping changes toggleable for fair comparisons. Finally, we locked a final configuration, cleaned/refactored the repo and configs for reproducible runs, and prepared the Methods + Results/Discussion materials aligned with the original project plan deliverables. Overall, this completes the planned milestones.
 
 ## Contribution
 - Kaijie Zhang: I was responsible for the model inference pipeline, implementation, and experimental evaluation of the different test-time methods, excluding the filter optimization component. I also led all visualization work and created the poster, including the figures, result presentation, and overall visual layout.
