@@ -3,9 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Primary Meta Tags -->
-    <!-- TODO: Replace with your paper title and author names -->
     <meta
       name="title"
       content="Large Language Models for Trauma Note Quality - Kaijie Zhang, Viv Somani"
@@ -31,7 +28,7 @@
     <!-- TODO: Same as paper title above -->
     <meta
       property="og:title"
-      content="Large Language Models for Trauma Note Quality - Kaijie Zhang, Viv Somani"
+      content="Large Language Models for Trauma Note Quality - Kaijie Zhang, Vivek Somani"
     />
     <!-- TODO: Same as description above -->
     <meta
@@ -50,7 +47,10 @@
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Large Language Models for Trauma Care Quality" />
+    <meta
+      property="og:image:alt"
+      content="Large Language Models for Trauma Care Quality"
+    />
     <meta
       property="article:published_time"
       content="2024-01-01T00:00:00.000Z"
@@ -62,7 +62,7 @@
 
     <!-- Academic/Research Specific -->
     <meta name="citation_author" content="Zhang, Kaijie" />
-    <meta name="citation_author" content="Somani, Viv" />
+    <meta name="citation_author" content="Somani, Vivek" />
     <meta name="citation_publication_date" content="2024" />
     <meta name="citation_conference_title" content="CONFERENCE_NAME" />
     <meta
@@ -84,7 +84,10 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 
     <!-- TODO: Replace with your paper title and authors -->
-    <title>Large Language Models for Trauma Care Quality: NTDS Complication Abstraction</title>
+    <title>
+      Large Language Models for Trauma Care Quality: NTDS Complication
+      Abstraction
+    </title>
 
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/x-icon" href="static/images/favicon.ico" />
@@ -258,7 +261,8 @@
             <div class="columns is-centered">
               <div class="column has-text-centered">
                 <h1 class="title is-1 publication-title">
-                  Large Language Models for Trauma Care Quality: NTDS Complication Abstraction
+                  Large Language Models for Trauma Care Quality: NTDS
+                  Complication Abstraction
                 </h1>
                 <div class="is-size-5 publication-authors">
                   <!-- TODO: Add personal links -->
@@ -269,7 +273,7 @@
                   >
                   <span class="author-block">
                     <a href="SECOND_AUTHOR_PERSONAL_LINK" target="_blank"
-                      >Viv Somani</a
+                      >Vivek Somani</a
                     ><sup>*</sup>,</span
                   >
                   <span class="author-block">
@@ -374,10 +378,9 @@
                   </li>
                   <li>
                     Since these notes tended to be long, we obtained relevant
-                    notes through a two-step filtration process of first using
+                    notes through a two-step filtration process: first using
                     fuzzy matching with regular expressions and then performing
-                    Retrieval Augmented Generation (RAG). This significantly
-                    lowered the number of notes sent to the LLM.
+                    Retrieval Augmented Generation (RAG).
                   </li>
                   <li>
                     We tested out several test-time inference techniques to
@@ -412,84 +415,47 @@
               </figure>
               <div class="content has-text-justified">
                 <p>
-                  Our primary outcome was agreement between the LLM and manual
-                  reviews performed by the institution's trauma registry. We
-                  assessed sensitivity, negative predictive value (NPV),
-                  positive predictive value (PPV), and frequency of
-                  complications identified by the LLM but not the registrar.
-                  Additionally, a subset of cases and output from the LLM was
-                  reviewed and validated by clinical subject matter experts
-                  (SMEs) via manual chart review. Cases in which the LLM missed
-                  complications that the human registrars identified were
-                  specifically included in this subset. Rationale provided by
-                  the LLM facilitated targeted reviews and verification of
-                  output as true or false.
+                  Our clinical notes spanned many clinical encounters and were
+                  extremely long. To filter these down, we split up our document
+                  into smaller <i>chunks</i>. Then, we extracted chunks with
+                  potentially relevant terms related to the condition with
+                  regular expressions to directly match potentially relevant
+                  phrases. Afterwards, Retrieval Augmented Generation (RAG) was
+                  performed, which used our Amazon Bedrock model to get a vector
+                  representation of each word. This allowed us to filter further
+                  and account for context. These steps were performed for all
+                  notes and all patients.
+                </p>
+                <p>
+                  Then, we tested out and compared several test-time inference
+                  strategies in identical comparisons:
+                </p>
+                <ul>
+                  <li>
+                    Majority Voting where we had 5 queries to the LLM and used
+                    it to explain its logic and vote "yes" or "no".
+                  </li>
+                  <li>
+                    Best of N with Chain of Thought Reasoning and a verifier
+                    model (pictured below).
+                  </li>
+                  <li>Beam Search (pictured below)</li>
+                  <li>Diverse Verifier Tree Search (pictued below)</li>
+                </ul>
+
+                <p>
+                  We ran llama's 3.1 8B Instruct Model on Amazon Bedrock both to
+                  perform inference and to be used as the verifier model. To
+                  score our LLMs we compared our predictions to predictions made
+                  by real registrars. We assessed sensitivity, negative
+                  predictive value (NPV), positive predictive value (PPV), and
+                  frequency of complications identified by the LLM but not the
+                  registrar.
                 </p>
               </div>
             </div>
           </div>
         </div>
-
-      
-
-
-      <!-- Image carousel -->
-      <section class="hero is-small">
-        <div class="hero-body">
-          <div class="container">
-            <div id="results-carousel" class="carousel results-carousel">
-              <div class="item">
-                <!-- TODO: Replace with your research result images -->
-                <img
-                  src="static/images/tech1.png"
-                  alt="First research result visualization"
-                  loading="lazy"
-                  style="max-width:30%; display:block; margin:0 auto;"
-                />
-                <!-- TODO: Replace with description of this result -->
-                <h2 class="subtitle has-text-centered">
-                  Generate multiple full solutions, verify the best one.
-                </h2>
-              </div>
-
-              <div class="item">
-                <!-- Your image here -->
-                <img
-                  src="static/images/tech2.png"
-                  alt="Second research result visualization"
-                  loading="lazy"
-                  style="max-width:30%; display:block; margin:0 auto;"
-                />
-                <h2 class="subtitle has-text-centered">
-                  Keep top reasoning paths at each search step.
-                </h2>
-              </div>
-
-              <div class="item">
-                <!-- Your image here -->
-                <img
-                  src="static/images/tech3.png"
-                  alt="Third research result visualization"
-                  loading="lazy"
-                  style="max-width:30%; display:block; margin:0 auto;"
-                />
-                <h2 class="subtitle has-text-centered">
-                  Search diverse subtrees to avoid early path collapse.
-                </h2>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-      </section>
-
-      <!-- Paper Results -->
-<section class="section hero">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Results</h2>
 
         <!-- Image carousel -->
         <section class="hero is-small">
@@ -497,74 +463,177 @@
             <div class="container">
               <div id="results-carousel" class="carousel results-carousel">
                 <div class="item">
+                  <!-- Your image here -->
                   <img
-                    src="static/images/exper_compar.png"
+                    src="static/images/RAG_workings.png"
+                    alt="RAG visualization"
+                    loading="lazy"
+                    style="max-width: 50%; display: block; margin: 0 auto"
+                  />
+                  <h2 class="subtitle has-text-centered">
+                    Retrieval Augmented Generation allows us to find the medical
+                    notes most relevant to each condition.
+                  </h2>
+                </div>
+
+                <div class="item">
+                  <img
+                    src="static/images/tech1.png"
                     alt="First research result visualization"
                     loading="lazy"
-                    style="max-width:100%; display:block; margin:0 auto;"
+                    style="max-width: 30%; display: block; margin: 0 auto"
                   />
                   <h2 class="subtitle has-text-centered">
-                    <ul>
-                      <li>• Stricter test-time search consistently reduced extra 
-                      complications, with Beam Search achieving the 
-                      cleanest output.</li>
-
-                      <li>• This gain came with a clear recall tradeoff, as 
-                      sensitivity dropped from Original to Best-of-N and 
-                      further to Beam Search.</li>
-
-                      <li>• Best-of-N provided the most balanced middle point,
-                      improving cleanliness over Original without becoming
-                      as conservative as Beam Search.</li>
-                    </ul>
+                    Generate multiple full solutions, verify the best one.
                   </h2>
                 </div>
 
                 <div class="item">
+                  <!-- Your image here -->
                   <img
-                    src="static/images/two_time_comp.png"
+                    src="static/images/tech2.png"
                     alt="Second research result visualization"
                     loading="lazy"
-                    style="max-width:100%; display:block; margin:0 auto;"
+                    style="max-width: 30%; display: block; margin: 0 auto"
                   />
                   <h2 class="subtitle has-text-centered">
-                    • Best-of-N with CoT is faster per case because runtime shifts away 
-                    from repeated LLM generation, although vectorstore building 
-                    becomes the dominant cost.
+                    Keep top reasoning paths at each search step.
                   </h2>
                 </div>
 
                 <div class="item">
+                  <!-- Your image here -->
                   <img
-                    src="static/images/VAP_Case_Study.png"
+                    src="static/images/tech3.png"
                     alt="Third research result visualization"
                     loading="lazy"
-                    style="max-width:100%; display:block; margin:0 auto;"
+                    style="max-width: 30%; display: block; margin: 0 auto"
                   />
                   <h2 class="subtitle has-text-centered">
-                    • On the VAP-enriched subset, the main limitation was
-                    recall rather than precision, and beam search preserved 
-                    the VAP-related path better than DVTS, which spent
-                    more search budget on non-VAP complications.
+                    Search diverse subtrees to avoid early path collapse.
                   </h2>
                 </div>
               </div>
             </div>
           </div>
         </section>
+      </section>
 
-        <div class="content has-text-justified">
-          <ul>
-            <li> Best-of-N with CoT improved negative-side cleanliness over the baseline and provided the strongest overall trade-off point.</li>
-            <li> Beam Search became too strict under the atomic design, which caused some truly positive features to return no complication at all and increased false negatives; DVTS behaved similarly because most complication trees were too simple to benefit from subtree diversity.</li>
-            <li> Hybrid chunking produced only a small overall gain, while retrieval quality was more visibly affected by the quality and coverage of complication-specific filters.</li>
-          </ul>
+      <!-- Paper Results -->
+      <section class="section hero">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">Results</h2>
+
+              <!-- Image carousel -->
+              <section class="hero is-small">
+                <div class="hero-body">
+                  <div class="container">
+                    <div
+                      id="results-carousel"
+                      class="carousel results-carousel"
+                    >
+                      <div class="item">
+                        <img
+                          src="static/images/exper_compar.png"
+                          alt="First research result visualization"
+                          loading="lazy"
+                          style="
+                            max-width: 100%;
+                            display: block;
+                            margin: 0 auto;
+                          "
+                        />
+                        <h2 class="subtitle has-text-centered">
+                          <ul>
+                            <li>
+                              • Stricter test-time search consistently reduced
+                              extra complications, with Beam Search achieving
+                              the cleanest output.
+                            </li>
+                            <li>
+                              • This gain came with a clear recall tradeoff, as
+                              sensitivity dropped from Original to Best-of-N and
+                              further to Beam Search.
+                            </li>
+
+                            <li>
+                              • Best-of-N provided the most balanced middle
+                              point, improving cleanliness over Original without
+                              becoming as conservative as Beam Search.
+                            </li>
+                          </ul>
+                        </h2>
+                      </div>
+
+                      <div class="item">
+                        <img
+                          src="static/images/two_time_comp.png"
+                          alt="Second research result visualization"
+                          loading="lazy"
+                          style="
+                            max-width: 100%;
+                            display: block;
+                            margin: 0 auto;
+                          "
+                        />
+                        <h2 class="subtitle has-text-centered">
+                          • Best-of-N with CoT is faster per case because
+                          runtime shifts away from repeated LLM generation,
+                          although vectorstore building becomes the dominant
+                          cost.
+                        </h2>
+                      </div>
+
+                      <div class="item">
+                        <img
+                          src="static/images/VAP_Case_Study.png"
+                          alt="Third research result visualization"
+                          loading="lazy"
+                          style="
+                            max-width: 100%;
+                            display: block;
+                            margin: 0 auto;
+                          "
+                        />
+                        <h2 class="subtitle has-text-centered">
+                          • On the VAP-enriched subset, the main limitation was
+                          recall rather than precision, and beam search
+                          preserved the VAP-related path better than DVTS, which
+                          spent more search budget on non-VAP complications.
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <div class="content has-text-justified">
+                <ul>
+                  <li>
+                    Best-of-N with CoT improved negative-side cleanliness over
+                    the baseline and provided the strongest overall trade-off
+                    point.
+                  </li>
+                  <li>
+                    Beam Search became too strict under the atomic design, which
+                    caused some truly positive features to return no
+                    complication at all and increased false negatives; DVTS
+                    behaved similarly because most complication trees were too
+                    simple to benefit from subtree diversity.
+                  </li>
+                  <li>
+                    Hybrid chunking produced only a small overall gain, while
+                    retrieval quality was more visibly affected by the quality
+                    and coverage of complication-specific filters.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       <!-- Paper Conclusion -->
       <section class="section hero is-light">
@@ -573,23 +642,12 @@
             <div class="column is-four-fifths">
               <h2 class="title is-3">Conclusion</h2>
               <div class="content has-text-justified">
-                <p>
-                  Overall, our progress is still slightly behind the original
-                  timeline, but we have completed the most difficult portion of
-                  the work. Next, our direction is clear. We will first optimize
-                  the current LLM setup and align its parameters with our prior
-                  LLaMA-based experiments to achieve comparable performance. We
-                  will then run ablation studies by swapping in the new
-                  components we proposed, so we can isolate their effects and
-                  draw concrete conclusions.
-                </p>
+                <p>We feel</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      
 
       <!-- Paper poster -->
       <section class="hero is-small is-light">
