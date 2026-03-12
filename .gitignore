@@ -1,4 +1,7 @@
 .DS_store
 .idea
+<<<<<<< Updated upstream
 .venv
+=======
+>>>>>>> Stashed changes
 tools
