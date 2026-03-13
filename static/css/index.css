@@ -121,6 +121,35 @@ body {
   font-size: 0;
 }
 
+/* Restore font-size for text inside carousel items */
+.results-carousel .item h2,
+.results-carousel .item p,
+.results-carousel .item ul,
+.results-carousel .item li {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .results-carousel .item {
+    padding: 10px;
+  }
+
+  .results-carousel .item img {
+    max-width: 100% !important;
+  }
+
+  .results-carousel .item h2,
+  .results-carousel .item li {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .results-carousel .item ul {
+    padding-left: 0.5rem;
+  }
+}
+
 .results-carousel video {
   margin: 0;
 }
