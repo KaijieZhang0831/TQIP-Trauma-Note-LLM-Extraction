@@ -7,23 +7,22 @@
       name="title"
       content="Large Language Models for Trauma Note Quality - Kaijie Zhang, Viv Somani"
     />
-    <!-- TODO: Write a compelling 150-160 character description of your research -->
     <meta
       name="description"
-      content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS"
+      content="Investigated Large Language Models (LLMs) for TQIP complication assessment instead of registrars. 
+      18 total conditions tested include myocardial infarction, pulmonary embolism, and alcohol withdrawal syndrome"
     />
     <meta
       name="keywords"
       content="Large Language Models, TQIP, RAG, machine learning, computer vision, AI"
     />
     <!-- TODO: List all authors -->
-    <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME" />
+    <meta name="author" content="Kaijie Zhang, Vivek Somani, Aaron Boussina" />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
-    <!-- TODO: Replace with your institution or lab name -->
     <meta property="og:site_name" content="UC San Diego" />
     <!-- TODO: Same as paper title above -->
     <meta
@@ -33,17 +32,8 @@
     <!-- TODO: Same as description above -->
     <meta
       property="og:description"
-      content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS"
-    />
-    <!-- TODO: Replace with your actual website URL -->
-    <meta
-      property="og:url"
-      content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    />
-    <!-- TODO: Create a 1200x630px preview image and update path -->
-    <meta
-      property="og:image"
-      content="https://YOUR_DOMAIN.com/static/images/social_preview.png"
+      content="Investigated Large Language Models (LLMs) for TQIP complication assessment instead of registrars. 
+      18 total conditions tested include myocardial infarction, pulmonary embolism, and alcohol withdrawal syndrome"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -267,17 +257,21 @@
                 <div class="is-size-5 publication-authors">
                   <!-- TODO: Add personal links -->
                   <span class="author-block">
-                    <a href="FIRST_AUTHOR_PERSONAL_LINK" target="_blank"
+                    <a href="https://github.com/KaijieZhang0831" target="_blank"
                       >Kaijie Zhang</a
                     ><sup>*</sup>,</span
                   >
                   <span class="author-block">
-                    <a href="SECOND_AUTHOR_PERSONAL_LINK" target="_blank"
+                    <a
+                      href="https://www.linkedin.com/in/vivek-somani-2676a315b/"
+                      target="_blank"
                       >Vivek Somani</a
                     ><sup>*</sup>,</span
                   >
                   <span class="author-block">
-                    <a href="THIRD_AUTHOR_PERSONAL_LINK" target="_blank"
+                    <a
+                      href="https://www.linkedin.com/in/aaron-boussina/"
+                      target="_blank"
                       >Aaron Boussina</a
                     >
                   </span>
@@ -416,9 +410,10 @@
               <div class="content has-text-justified">
                 <p>
                   Our clinical notes were provided to us over a 22-month span
-                  from 2023 to 2024 from UC San Diego Health. These clinical notes
-                  spanned many clinical encounters and were extremely long. To
-                  filter these down, we split up our document into smaller
+                  from 2023 to 2024 from UC San Diego Health. These clinical
+                  notes spanned many clinical encounters and were extremely
+                  long. To filter these down, we split up our document into
+                  smaller
                   <i>chunks</i>. Then, we extracted chunks with potentially
                   relevant terms related to the condition with regular
                   expressions to directly match potentially relevant phrases.
@@ -427,12 +422,15 @@
                   representation of each word. This allowed us to filter further
                   and account for context. These steps were performed for all
                   notes and all patients. This pipeline was largely built by us,
-                  but we reused some aspects and the general structure of a previous
-                  baseline which had already been performed on these same notes.
+                  but we reused some aspects and the general structure of a
+                  previous baseline which had already been performed on these
+                  same notes.
                 </p>
                 <p>
-                  Then, we tested out and compared several test-time inference
-                  strategies in identical comparisons:
+                  After getting baseline results with room for improvement with
+                  majority voting, we looked to improve this with new methods.
+                  To do so, we tested out and compared several test-time
+                  inference strategies in identical comparisons:
                 </p>
                 <ul>
                   <li>
