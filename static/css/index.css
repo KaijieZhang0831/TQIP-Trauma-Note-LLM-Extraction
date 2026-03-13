@@ -129,8 +129,23 @@ body {
   background: #000000;
 }
 
-.eql-cntrb { 
+.eql-cntrb {
   font-size: smaller;
+}
+
+.poster-mobile-link {
+  display: none;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+@media screen and (max-width: 768px) {
+  .poster-iframe {
+    display: none;
+  }
+  .poster-mobile-link {
+    display: block;
+  }
 }
 
 
