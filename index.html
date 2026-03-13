@@ -374,7 +374,7 @@
                   <li>
                     We tested our LLMs ability to label long medical notes for
                     American of Surgeons Trauma Quality Improvement Program (or
-                    ACS TQIP) taken over a 22 month span between 2023 to 2024.
+                    ACS TQIP) from UC San Diego Health Medical Center.
                   </li>
                   <li>
                     Since these notes tended to be long, we obtained relevant
@@ -415,16 +415,20 @@
               </figure>
               <div class="content has-text-justified">
                 <p>
-                  Our clinical notes spanned many clinical encounters and were
-                  extremely long. To filter these down, we split up our document
-                  into smaller <i>chunks</i>. Then, we extracted chunks with
-                  potentially relevant terms related to the condition with
-                  regular expressions to directly match potentially relevant
-                  phrases. Afterwards, Retrieval Augmented Generation (RAG) was
+                  Our clinical notes were provided to us over a 22-month span
+                  from 2023 to 2024 from UC San Diego Health. These clinical notes
+                  spanned many clinical encounters and were extremely long. To
+                  filter these down, we split up our document into smaller
+                  <i>chunks</i>. Then, we extracted chunks with potentially
+                  relevant terms related to the condition with regular
+                  expressions to directly match potentially relevant phrases.
+                  Afterwards, Retrieval Augmented Generation (RAG) was
                   performed, which used our Amazon Bedrock model to get a vector
                   representation of each word. This allowed us to filter further
                   and account for context. These steps were performed for all
-                  notes and all patients.
+                  notes and all patients. This pipeline was largely built by us,
+                  but we reused some aspects and the general structure of a previous
+                  baseline which had already been performed on these same notes.
                 </p>
                 <p>
                   Then, we tested out and compared several test-time inference
@@ -610,6 +614,12 @@
               </section>
 
               <div class="content has-text-justified">
+                <p>
+                  The comparisons between groups were obtained from running 120
+                  patients' experiments with all 18 complications. These were a
+                  random sample in consistent conditions and notes. This makes
+                  our results robust to environmental issues.
+                </p>
                 <ul>
                   <li>
                     Best-of-N with CoT improved negative-side cleanliness over
@@ -642,7 +652,12 @@
             <div class="column is-four-fifths">
               <h2 class="title is-3">Conclusion</h2>
               <div class="content has-text-justified">
-                <p>We feel</p>
+                <p>
+                  We have tested out a several inference approaches in addition
+                  to Retrieval Augmented Generation but did not find anything
+                  immediately promising to replace healthcare registrars. Future
+                  work will be useful to improve these experiments.
+                </p>
               </div>
             </div>
           </div>
