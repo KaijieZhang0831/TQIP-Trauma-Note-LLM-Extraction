@@ -419,13 +419,23 @@
                   notes and all patients. This pipeline was largely built by us,
                   but we reused some aspects and the general structure of a
                   previous baseline which had already been performed on these
-                  same notes.
+                  same notes. We performed prompt engineering in addition to
+                  this.
                 </p>
                 <p>
-                  After getting baseline results with room for improvement with
-                  majority voting, we looked to improve this with new methods.
-                  To do so, we tested out and compared several test-time
-                  inference strategies in identical comparisons:
+                  We ran llama's 3.1 8B Instruct Model on Amazon Bedrock both to
+                  perform inference and to be used as the verifier model. To
+                  score our LLMs we compared our predictions to predictions made
+                  by real registrars. We assessed sensitivity, negative
+                  predictive value (NPV), positive predictive value (PPV), and
+                  frequency of complications identified by the LLM but not the
+                  registrar.
+                </p>
+                <p>
+                  After getting baseline results with majority voting and
+                  finding room for improvement, we looked to improve this with
+                  new methods. To do so, we tested out and compared several
+                  test-time inference strategies in identical comparisons:
                 </p>
                 <ul>
                   <li>
@@ -439,16 +449,6 @@
                   <li>Beam Search (pictured below)</li>
                   <li>Diverse Verifier Tree Search (pictued below)</li>
                 </ul>
-
-                <p>
-                  We ran llama's 3.1 8B Instruct Model on Amazon Bedrock both to
-                  perform inference and to be used as the verifier model. To
-                  score our LLMs we compared our predictions to predictions made
-                  by real registrars. We assessed sensitivity, negative
-                  predictive value (NPV), positive predictive value (PPV), and
-                  frequency of complications identified by the LLM but not the
-                  registrar.
-                </p>
               </div>
             </div>
           </div>
@@ -577,8 +577,8 @@
                     style="max-width: 100%; display: block; margin: 0 auto"
                   />
                   <h2 class="subtitle has-text-centered">
-                    • On the VAP-enriched subset, the main limitation was
-                    recall rather than precision, and beam search preserved the
+                    • On the VAP-enriched subset, the main limitation was recall
+                    rather than precision, and beam search preserved the
                     VAP-related path better than DVTS, which spent more search
                     budget on non-VAP complications.
                   </h2>
@@ -634,7 +634,10 @@
                   We have tested out a several inference approaches in addition
                   to Retrieval Augmented Generation but did not find anything
                   immediately promising to replace healthcare registrars. Future
-                  work will be useful to improve these experiments.
+                  work will be useful to improve these experiments. One may try
+                  out work that we did not try yet such as trying out different
+                  chunking strategies, overhauling the architecture, and more
+                  extensive prompt engineering.
                 </p>
               </div>
             </div>
@@ -648,7 +651,12 @@
           <div class="container">
             <h2 class="title">Poster</h2>
 
-            <iframe class="poster-iframe" src="static/pdfs/poster.pdf" width="100%" height="550">
+            <iframe
+              class="poster-iframe"
+              src="static/pdfs/poster.pdf"
+              width="100%"
+              height="550"
+            >
             </iframe>
             <div class="poster-mobile-link">
               <a
