@@ -522,90 +522,79 @@
           <div class="columns is-centered has-text-centered">
             <div class="column is-four-fifths">
               <h2 class="title is-3">Results</h2>
+            </div>
+          </div>
+        </div>
 
-              <!-- Image carousel -->
-              <section class="hero is-small">
-                <div class="hero-body" style="padding-left: 0; padding-right: 0;">
-                  <div>
-                    <div
-                      id="results-carousel"
-                      class="carousel results-carousel"
-                    >
-                      <div class="item">
-                        <img
-                          src="static/images/exper_compar.png"
-                          alt="First research result visualization"
-                          loading="lazy"
-                          style="
-                            max-width: 100%;
-                            display: block;
-                            margin: 0 auto;
-                          "
-                        />
-                        <h2 class="subtitle has-text-centered">
-                          <ul>
-                            <li>
-                              • Stricter test-time search consistently reduced
-                              extra complications, with Beam Search achieving
-                              the cleanest output.
-                            </li>
-                            <li>
-                              • This gain came with a clear recall tradeoff, as
-                              sensitivity dropped from Original to Best-of-N and
-                              further to Beam Search.
-                            </li>
-
-                            <li>
-                              • Best-of-N provided the most balanced middle
-                              point, improving cleanliness over Original without
-                              becoming as conservative as Beam Search.
-                            </li>
-                          </ul>
-                        </h2>
-                      </div>
-
-                      <div class="item">
-                        <img
-                          src="static/images/two_time_comp.png"
-                          alt="Second research result visualization"
-                          loading="lazy"
-                          style="
-                            max-width: 100%;
-                            display: block;
-                            margin: 0 auto;
-                          "
-                        />
-                        <h2 class="subtitle has-text-centered">
-                          • Best-of-N with CoT is faster per case because
-                          runtime shifts away from repeated LLM generation,
-                          although vectorstore building becomes the dominant
-                          cost.
-                        </h2>
-                      </div>
-
-                      <div class="item">
-                        <img
-                          src="static/images/VAP_Case_Study.png"
-                          alt="Third research result visualization"
-                          loading="lazy"
-                          style="
-                            max-width: 100%;
-                            display: block;
-                            margin: 0 auto;
-                          "
-                        />
-                        <h2 class="subtitle has-text-centered">
-                          • On the VAP-enriched subset, the main limitation was
-                          recall rather than precision, and beam search
-                          preserved the VAP-related path better than DVTS, which
-                          spent more search budget on non-VAP complications.
-                        </h2>
-                      </div>
-                    </div>
-                  </div>
+        <!-- Image carousel -->
+        <section class="hero is-small">
+          <div class="hero-body">
+            <div class="container">
+              <div id="results-carousel" class="carousel results-carousel">
+                <div class="item">
+                  <img
+                    src="static/images/exper_compar.png"
+                    alt="First research result visualization"
+                    loading="lazy"
+                    style="max-width: 100%; display: block; margin: 0 auto"
+                  />
+                  <h2 class="subtitle has-text-centered">
+                    <ul>
+                      <li>
+                        • Stricter test-time search consistently reduced extra
+                        complications, with Beam Search achieving the cleanest
+                        output.
+                      </li>
+                      <li>
+                        • This gain came with a clear recall tradeoff, as
+                        sensitivity dropped from Original to Best-of-N and
+                        further to Beam Search.
+                      </li>
+                      <li>
+                        • Best-of-N provided the most balanced middle point,
+                        improving cleanliness over Original without becoming as
+                        conservative as Beam Search.
+                      </li>
+                    </ul>
+                  </h2>
                 </div>
-              </section>
 
+                <div class="item">
+                  <img
+                    src="static/images/two_time_comp.png"
+                    alt="Second research result visualization"
+                    loading="lazy"
+                    style="max-width: 100%; display: block; margin: 0 auto"
+                  />
+                  <h2 class="subtitle has-text-centered">
+                    • Best-of-N with CoT is faster per case because runtime
+                    shifts away from repeated LLM generation, although
+                    vectorstore building becomes the dominant cost.
+                  </h2>
+                </div>
+
+                <div class="item">
+                  <img
+                    src="static/images/VAP_Case_Study.png"
+                    alt="Third research result visualization"
+                    loading="lazy"
+                    style="max-width: 100%; display: block; margin: 0 auto"
+                  />
+                  <h2 class="subtitle has-text-centered">
+                    • On the VAP-enriched subset, the main limitation was
+                    recall rather than precision, and beam search preserved the
+                    VAP-related path better than DVTS, which spent more search
+                    budget on non-VAP complications.
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
               <div class="content has-text-justified">
                 <p>
                   The comparisons between groups were obtained from running 120
