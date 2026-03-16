@@ -339,21 +339,13 @@
               <div class="content has-text-justified">
                 <ul>
                   <li>
-                    Maintaining healthcare trauma quality standards are
-                    <strong>costly but important</strong>. It is incredibly
-                    important to measure and improve hospital outcomes, but
-                    large hospitals need to employ about 5 registrars
-                    specifically for this, which is costly.
+                    Maintaining trauma care quality standards is costly but important. Trauma centers must review patient charts and report complications defined by the National Trauma Data Standard (NTDS), a process that is labor-intensive and often requires multiple trained trauma registrars.
                   </li>
                   <li>
-                    Large Language Models (LLMs) present us with an opportunity
-                    to reduce the cost to hospitals for these outputs.
+                    In this project, we study whether Large Language Models (LLMs) can identify 18 NTDS complications from long trauma notes to support trauma registrars and hospital quality staff.
                   </li>
                   <li>
-                    We believe that hospital care quality would substantially
-                    improve if they had such information and therefore, believed
-                    that this project would be especially useful to hospital
-                    staff.
+                    Our goal is not to replace expert chart abstractors, but to explore whether LLMs can reduce review burden and improve reporting efficiency by serving as a decision-support tool.
                   </li>
                 </ul>
               </div>
@@ -361,27 +353,19 @@
               <div class="content has-text-justified">
                 <ul>
                   <li>
-                    We tested our LLMs ability to label long medical notes for
-                    American of Surgeons Trauma Quality Improvement Program (or
-                    ACS TQIP) from UC San Diego Health Medical Center.
+                    We evaluated whether LLMs could label 18 trauma complications from long clinical notes from UC San Diego Health, with the intended use case of assisting trauma registry review rather than autonomous deployment.
                   </li>
                   <li>
-                    Since these notes tended to be long, we obtained relevant
-                    notes through a two-step filtration process: first using
-                    fuzzy matching with regular expressions and then performing
-                    Retrieval Augmented Generation (RAG).
+                    Because these notes are lengthy, we first filtered potentially relevant text with regular-expression based matching and then used Retrieval Augmented Generation (RAG) to retrieve the most relevant evidence chunks for each complication.
                   </li>
                   <li>
-                    We tested out several test-time inference techniques to
-                    improve the LLMs' output performance including Chain of
-                    Thought with a reward model, beam search, diverse verifier
-                    tree search (DVTS).
+                    We compared several test-time inference strategies under the same retrieval and data conditions, including majority voting, Best-of-N with Chain of Thought and a verifier, Beam Search, and Diverse Verifier Tree Search (DVTS).
                   </li>
                   <li>
-                    Unfortunately, None of the techniques tried thus far are
-                    likely to be successful enough to replace registrars. We
-                    hope future work can improve our overall performance for
-                    each of these methods.
+                    Our main finding is that Best-of-N provided the most balanced trade-off: it reduced false positives compared with the baseline, while Beam Search was cleaner but too conservative and caused a much larger drop in sensitivity.
+                  </li>
+                  <li>
+                    Overall, the current pipeline is better interpreted as a decision-support prototype than a registrar replacement system, and future work should focus on preserving sensitivity while improving precision.
                   </li>
                 </ul>
               </div>
@@ -403,12 +387,11 @@
                 />
               </figure>
               <div class="content has-text-justified">
-                <p>
-                  Our clinical notes were provided to us over a 22-month span
-                  from 2023 to 2024 from UC San Diego Health. These clinical
-                  notes spanned many clinical encounters and were extremely
-                  long. To filter these down, we split up our document into
-                  smaller
+              
+                  <p>
+                  We used trauma registry-linked clinical notes from UC San Diego Health spanning a 22-month period from 2023 to 2024. Because the notes were often long and highly redundant, we built a retrieval pipeline that first filtered text with complication-specific regular expressions, then split notes into chunks, embedded them, and retrieved the most relevant evidence with RAG. We used this retrieved evidence to prompt the LLM for per-complication decisions. The pipeline architecture and experimental comparison framework were implemented by our team, while some design ideas were adapted from prior baseline work on the same notes. To make the comparison fair, all inference strategies were evaluated under the same underlying retrieval and data conditions.
+                  </p>
+                  <p>
                   <i>chunks</i>. Then, we extracted chunks with potentially
                   relevant terms related to the condition with regular
                   expressions to directly match potentially relevant phrases.
@@ -592,31 +575,27 @@
           <div class="columns is-centered has-text-centered">
             <div class="column is-four-fifths">
               <div class="content has-text-justified">
-                <p>
-                  The comparisons between groups were obtained from running 120
-                  patients' experiments with all 18 complications. These were a
-                  random sample in consistent conditions and notes. This makes
-                  our results robust to environmental issues.
-                </p>
                 <ul>
                   <li>
-                    Best-of-N with CoT improved negative-side cleanliness over
-                    the baseline and provided the strongest overall trade-off
-                    point.
+                    Across all 18 complications, the baseline achieved the highest sensitivity but produced many additional complication labels, indicating substantial false-positive burden.
                   </li>
                   <li>
-                    Beam Search became too strict under the atomic design, which
-                    caused some truly positive features to return no
-                    complication at all and increased false negatives; DVTS
-                    behaved similarly because most complication trees were too
-                    simple to benefit from subtree diversity.
+                    Best-of-N improved this trade-off by reducing false positives and improving negative-side cleanliness without becoming as conservative as Beam Search.
                   </li>
                   <li>
-                    Hybrid chunking produced only a small overall gain, while
-                    retrieval quality was more visibly affected by the quality
-                    and coverage of complication-specific filters.
+                    Beam Search achieved the strongest filtering effect, but this came with a much larger drop in sensitivity, meaning it missed more true complications.
+                  </li>
+                  <li>
+                    In this setting, sensitivity is especially important because the system is intended to support screening and review; however, PPV also matters because excessive false positives increase manual burden and reduce trust in the tool.
+                  </li>
+                  <li>
+                    Overall, Best-of-N was the most balanced configuration among the tested methods, while DVTS behaved similarly to Beam Search because many complication decision trees were too simple to benefit from subtree diversity.
                   </li>
                 </ul>
+
+                <p>
+                  These comparisons were obtained under matched retrieval and data conditions. The main takeaway is not that stricter search is always better, but that there is a practical trade-off between preserving true complication recall and reducing unnecessary positive triggers. This is why we interpret Best-of-N as the strongest overall operating point in the current system rather than Beam Search.
+                </p>
               </div>
             </div>
           </div>
@@ -631,13 +610,7 @@
               <h2 class="title is-3">Conclusion</h2>
               <div class="content has-text-justified">
                 <p>
-                  We successfully reduced false positives, but this came at the cost of lower sensitivity. Since sensitivity is critical in this setting, future work should focus on balancing a more lenient baseline with stricter tree-search approaches to find a better tradeoff. The goal of this pipeline is to assist trained staff and improve reporting efficiency, not to replace clinical abstractors. We have tested out a several inference approaches in addition
-                  to Retrieval Augmented Generation but did not find anything
-                  immediately promising to replace healthcare registrars. Future
-                  work will be useful to improve these experiments. One may try
-                  out work that we did not try yet such as trying out different
-                  chunking strategies, overhauling the architecture, and more
-                  extensive prompt engineering.
+                  We successfully reduced false positives in our stronger configurations, but this came at the cost of lower sensitivity. Because sensitivity is critical in trauma quality review, the main challenge is to find a better operating point between a more lenient screening baseline and stricter tree-based search. Our results suggest that this pipeline is more appropriate as a decision-support tool for trained staff than as a replacement for trauma registrars. Future work should focus on improving this trade-off through better decision structures, more targeted prompt design, and stronger retrieval and chunking strategies.
                 </p>
               </div>
             </div>
